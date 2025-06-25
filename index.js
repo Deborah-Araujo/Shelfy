@@ -5,7 +5,10 @@ const app = express()
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
+
 app.set('views', __dirname + '/src/views');
+// Tentando usar imagens no homepage.html
+app.use('/static', express.static(__dirname + '/static'));
 
 app.use(express.static(__dirname + '/static'));
 

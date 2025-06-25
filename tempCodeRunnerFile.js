@@ -1,0 +1,1 @@
+app.use('static', express.static(__dirname + '/static'));

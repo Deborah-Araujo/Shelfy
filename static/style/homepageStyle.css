@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Estilização da homepage */
+body{
+    background-color: #FCF8F5;
+}
+
+/* Div inicial */
+.div-superior{
+    background-color: #E2D6C8;
+    /* width: 100%;
+    height: 100%; */
+}
+
+/* Estilização da nav-bar */
+.navbar-brand{
+    margin-left: 2.6rem;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 5rem;
+    margin-top: 0.1rem;
+    margin-left: 4.5rem;
+}
+
+.nav-links {
+    font-size: 1.3rem;
+    color: #63524A;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+/* Estilização da main */
+.main-img{
+    width: 9rem;
+    height: 8.3rem;
+}
+
+.main-title{
+    font-size: 5.3rem;
+    font-family: 'Poppins', sans-serif;
+    color: #9C8CB9;
+    font-weight: 500;
+    margin-top: 1.7rem;
+    margin-left: 1.3rem;
+}
+
+.main-text{
+    font-size: 1.5rem;
+}
