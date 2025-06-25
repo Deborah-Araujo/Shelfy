@@ -3,3 +3,89 @@
     width: 200px;
     height: 200px;
 }
+
+.popup {
+    display: none; /* ou flex pra mostrar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    width: 35rem;
+    background: linear-gradient(to right, #d2c3b2, #FAECDC);
+    color: #63524A;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.popup-content h6 {
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #8c82b4;
+}
+
+.novo-form input {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.2rem;
+    width: 100%;
+    border: none;
+    background-color: #FCFBF5;
+    border-radius: 10px;
+    padding-left: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.novo-form select {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.2rem;
+    width: 100%;
+    border: none;
+    background-color: #FCFBF5;
+    border-radius: 10px;
+    padding: 0.3rem;
+    padding-left: 0.8rem;
+}
+
+.novo-form textarea {
+    resize: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.2rem;
+    width: 100%;
+    border: none;
+    background-color: #FCFBF5;
+    border-radius: 20px;
+    padding-bottom: 2rem;
+    padding-left: 0.8rem;
+    margin-bottom: 3rem;
+}
+
+.novo-form input, select, textarea:focus {
+    outline: none; 
+    box-shadow: 0 0 6px #FFFFFF
+}
+
+.submit-btn {
+    border: none;
+    background-color: #86BD96;
+    color: #DCD7D5;
+    font-size: 1.3rem;
+    padding: 0.2rem;
+    width: 23%;
+    border-radius: 10px;
+}
+
+.livro {
+    background-color: #63524A;
+    width: 5px;
+    height: 10px;
+    margin: 3rem;
+}

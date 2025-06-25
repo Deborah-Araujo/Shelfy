@@ -1,24 +1,41 @@
 const Estante = require('../models/estanteModel');
+const Livro = require('../models/livroModel')
+// const livroController = require('../controllers/livroController')
 
 async function estantesView(req, res) {
   const estantes = await Estante.findAll({
-    where: { fk_id_usuario: req.session.id_usuario }
+    where: { fk_id_usuario_estante: req.session.id_usuario }
   });
 
   res.render('estantes.html', { estantes });
 }
 
 async function estante_unicaView(req, res) {
-  const id = req.params.id;
+    const estante = await Estante.findOne({
+    where: {
+        id_estante: req.params.id,
+        fk_id_usuario_estante: req.session.id_usuario
+    },
+    include: [{
+        model: Livro // -> Inclui os livros associados à estante
+    }]
+    });
 
-  const estante = await Estante.findOne({
-        where: {
-        id: id,
-        fk_id_usuario: req.session.id_usuario
-        }
-  });
+    console.log(estante.livros)
 
-  res.render('estante_unica.html', { estante });
+    res.render('estante_unica.html', { estante });
+
+    // res.render('estante_unica.html', {
+    // estante: {
+    //     nome_estante: estante.nome,
+    //     id_estante: estante.id,
+
+    //     livros: estante.livros.map(livro => ({
+    //     nome_livro: livro.nome,
+    //     autor: livro.autor
+    //     }))
+    // }
+    // });
 }
 
 function postAdicionarEstante(req, res){
@@ -26,7 +43,7 @@ function postAdicionarEstante(req, res){
 
     const dados_estante = {
     ...req.body,
-    fk_id_usuario: user_id
+    fk_id_usuario_estante: user_id
     };
 
     erro_campos = validarCampos(dados_estante)
@@ -45,19 +62,19 @@ function postAdicionarEstante(req, res){
 function validarCampos(dados_estante) {
     erro_form = false
 
-    if (!dados_estante.nome || dados_estante.nome.trim().length === 0) {
+    if (!dados_estante.nome_estante || dados_estante.nome_estante.trim().length === 0) {
         erro_form = true
     }
 
-    if (!dados_estante.tema || dados_estante.tema.trim().length === 0) {
+    if (!dados_estante.tema_estante || dados_estante.tema_estante.trim().length === 0) {
         erro_form = true
     }
 
-    if (!dados_estante.cor || dados_estante.cor.trim().length === 0) {
+    if (!dados_estante.cor_estante || dados_estante.cor_estante.trim().length === 0) {
         erro_form = true
     }
 
-    if (!dados_estante.descricao || dados_estante.descricao.trim().length === 0) {
+    if (!dados_estante.descricao_estante || dados_estante.descricao_estante.trim().length === 0) {
         erro_form = true
     }
 

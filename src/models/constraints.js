@@ -1,11 +1,19 @@
-// const Usuario = require('./usuarioModel');
-// const Estante = require('./estanteModel');
+// As constraints foram definidas saparadamente para evitar import cricular entre as models 
 
-// // agora sim, com todos carregados, podemos associar
-// Usuario.hasMany(Estante, { foreignKey: 'fk_id_usuario' });
-// Estante.belongsTo(Usuario, { foreignKey: 'fk_id_usuario' });
+const Usuario = require('./usuarioModel');
+const Estante = require('./estanteModel');
+const Livro = require('./livroModel')
 
-// module.exports = {
-//     Usuario,
-//     Estante
-// };
+// Associação entre usário e estante
+Usuario.hasMany(Estante, { foreignKey: 'fk_id_usuario' });
+Estante.belongsTo(Usuario, { foreignKey: 'fk_id_usuario' });
+
+// Associação entre estante e livro
+Estante.hasMany(Livro, {foreignKey: 'fk_id_estante_livro'});
+Livro.belongsTo(Estante, {foreignKey: 'fk_id_estante_livro'});
+
+module.exports = {
+    Usuario,
+    Estante,
+    Livro
+};
