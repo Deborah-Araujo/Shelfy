@@ -10,12 +10,10 @@ app.set('views', __dirname + '/src/views');
 // Tentando usar imagens no homepage.html
 app.use('/static', express.static(__dirname + '/static'));
 
-app.use(express.static(__dirname + '/static'));
-
 app.use(express.urlencoded({extended: true}));
 
 app.use('/', require('./src/routes/homepageRoutes')) 
-app.use('/login', require('./src/routes/loginRoutes')) 
+app.use('/user', require('./src/routes/usuarioRoutes')) //Fica sendo um prefixo pra rotas do usuário. Pra acessar login, por exemplo, tem que acessar: /user/login
 
 const PORT = 8080;
 app.listen(PORT, ()=>{

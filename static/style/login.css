@@ -7,8 +7,8 @@ body {
 }
 
 .logo {
-    width: 8rem;
-    height: 7rem;
+    width: 9rem;
+    height: 8rem;
 }
 
 .content {
@@ -59,7 +59,12 @@ body {
     color: #DCD7D5;
     font-size: 1.3rem;
     padding: 0.2rem;
-    width: 5rem;
+    width: 25%;
     border-radius: 10px;
     margin: 3rem;
+}
+
+.link {
+    margin: 3rem;
+    font-size: 1.2rem;
 }
