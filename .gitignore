@@ -1,3 +1,6 @@
+# Banco de dados local
+database.sqlite
+
 # Logs
 logs
 *.log
