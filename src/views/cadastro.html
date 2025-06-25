@@ -15,6 +15,14 @@
 </head>
 <body>
     <div class="container d-flex  flex-column justify-content-center align-items-center content">
+
+        {{#erro_campos}}
+            <div class="alert alert-danger mt-2">
+                <strong>Erro! </strong>Preencha todos os campos.
+            </div>
+        {{/erro_campos}}
+
+
         <div class="login-box">
 
             <div class="row d-flex justify-content-center">
@@ -24,25 +32,25 @@
             <div class="login-form">
                 <h5>Cadastro em Shelfy</h5>
 
-                <form action="">
+                <form action="/user/cadastrar_usuario" method="post">
                     <div class="row">
                         <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome">
+                        <input type="text" id="nome" name="nome" value="{{dados_usuario.nome}}">
                     </div>
 
                     <div class="row">
                         <label for="sobrenome">Sobrenome:</label>
-                        <input type="text" id="sobrenome" name="sobrenome">
+                        <input type="text" id="sobrenome" name="sobrenome" value="{{dados_usuario.sobrenome}}">
                     </div>
 
                     <div class="row">
                         <label for="email">E-mail:</label>
-                        <input type="text" id="email" name="email">
+                        <input type="text" id="email" name="email" value="{{dados_usuario.email}}">
                     </div>
 
                     <div class="row">
-                        <label for="email">Senha:</label>
-                        <input type="text" id="senha" name="senha">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" value="{{dados_usuario.senha}}">
                     </div>
 
                     <div class="row d-flex justify-content-center">
