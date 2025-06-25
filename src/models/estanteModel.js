@@ -2,8 +2,6 @@ const Sequelize = require('sequelize');
 const db = require('../../db');
 const Usuario = require('../models/usuarioModel');
 
-console.log('Usuario model:', Usuario);
-
 const Estante = db.define('estante', {
     id: {type: Sequelize.INTEGER, autoIncrement: true, allowNull: false, primaryKey: true},
     nome: {type: Sequelize.STRING, allowNull: false},

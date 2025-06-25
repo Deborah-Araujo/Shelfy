@@ -101,3 +101,9 @@ body {
     width: 23%;
     border-radius: 10px;
 }
+
+.estante {
+    background-color: #8c82b4;
+    width: 200px;
+    height: 200px;
+}

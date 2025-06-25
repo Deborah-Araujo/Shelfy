@@ -1,7 +1,11 @@
 const Estante = require('../models/estanteModel');
 
-function estantesView(req, res) {
-    res.render('estantes.html')
+async function estantesView(req, res) {
+  const estantes = await Estante.findAll({
+    where: { fk_id_usuario: req.session.id_usuario }
+  });
+
+  res.render('estantes.html', { estantes });
 }
 
 function postAdicionarEstante(req, res){

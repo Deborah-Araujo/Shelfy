@@ -24,6 +24,15 @@
             {{/erro_campos}}
 
             <button class="novo-btn" onclick="openPopup()">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button>
+                <div class="container d-flex justify-content-center">
+                    {{#estantes}}
+
+                        <div class="estante">
+                            {{nome}}
+                        </div>
+
+                    {{/estantes}}
+                </div>
         </div>
     </main>
 
