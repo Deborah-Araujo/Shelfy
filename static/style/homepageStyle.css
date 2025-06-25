@@ -32,6 +32,34 @@ body{
     font-weight: 500;
 }
 
+.nav-btn{
+    background-color: #86BD96;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 2.5rem;
+    width: 8rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #63524A;
+    text-decoration: none;
+    border: none;
+    transition: background 0.2s ease-in-out;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+.nav-btn:hover{
+    background-color: #FCF8F5;
+    transition: background 0.2s ease-in-out;
+    color: #86BD96;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
 /* Estilização da main */
 .main-img{
     width: 9rem;
@@ -76,6 +104,7 @@ body{
 .main-btn:hover {
     background-color: #FCF8F5;
     color: #63524A;
+    transition: background 0.2s ease-in-out;
 }
 
 /* Título central, abaixo do main */
