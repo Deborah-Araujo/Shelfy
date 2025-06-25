@@ -7,4 +7,6 @@ const usuarioController = require('../controllers/usuarioController')
 router.get('/todas', usuarioController.verificarAutenticacao, estanteController.estantesView);
 router.post('/adicionar', usuarioController.verificarAutenticacao, estanteController.postAdicionarEstante);
 
+router.get('/:id', usuarioController.verificarAutenticacao, estanteController.estante_unicaView);
+
 module.exports = router;

@@ -9,8 +9,4 @@ const Usuario = db.define('usuario', {
     senha: {type: Sequelize.STRING, allowNull: false}
 });
 
-// Usuario.hasMany(Estante, {
-//   foreignKey: 'fk_id_usuario'
-// });
-
 module.exports = Usuario;

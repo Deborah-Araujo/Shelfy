@@ -48,13 +48,14 @@
             {{/erro_campos}}
 
             <button class="novo-btn" onclick="openPopup()">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button>
+
                 <div class="container d-flex justify-content-center">
                     {{#estantes}}
-
-                        <div class="estante">
-                            {{nome}}
-                        </div>
-
+                            <a href="/estantes/{{id_estante}}">
+                                <div class="estante">
+                                {{nome_estante}}
+                                </div>
+                            </a>
                     {{/estantes}}
                 </div>
         </div>
@@ -68,19 +69,19 @@
             <form action="/estantes/adicionar" method="POST">
                 <div class="novo-form">
                     <div class="row">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" value="{{dados_estante.nome}}">
+                        <label for="nome_estante">Nome:</label>
+                        <input type="text" id="nome_estante" name="nome_estante" value="{{dados_estante.nome_estante}}">
                     </div>
 
                     <div class="row ajustify-content-between">
                         <div class="col-9">
-                            <label for="tema">Tema:</label>
-                            <input type="text" id="tema" name="tema" value="{{dados_estante.tema}}">
+                            <label for="tema_estante">Tema:</label>
+                            <input type="text" id="tema_estante" name="tema_estante" value="{{dados_estante.tema_estante}}">
                         </div>
 
                         <div class="col-3">
-                            <label for="cor">Cor:</label>
-                            <select name="cor" id="cor">
+                            <label for="cor_estante">Cor:</label>
+                            <select name="cor_estante" id="cor_estante">
                                     <option value="#F06365">Vermelho</option>
                                     <option value="#4B3F6E">Azul</option>
                                     <option value="#90A8DF">Azul claro</option>
@@ -93,8 +94,8 @@
                     </div>
 
                     <div class="row">
-                        <label for="descricao">Descrição:</label>
-                        <textarea type="text" id="descricao" name="descricao" value="{{dados_estante.descricao}}"></textarea>
+                        <label for="descricao_estante">Descrição:</label>
+                        <textarea type="text" id="descricao_estante" name="descricao_estante" value="{{dados_estante.descricao_estante}}"></textarea>
                     </div>
 
                     <div class="row d-flex justify-content-center">
