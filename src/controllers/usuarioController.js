@@ -10,6 +10,17 @@ function cadastroView (req, res) {
     res.render('cadastro.html')
 }
 
+function verificarAutenticacao(req, res, next){
+    if(req.session.autorizado){
+        console.log('usuário autorizado');
+        next();
+    }
+    else{
+        console.log('usuário NÃO autorizado');
+        res.redirect('/user/login');
+    }
+}
+
 async function postAutenticarUsuario(req, res) {
     const dados_usuario = req.body;
     erro_campos = validarCamposLogin(dados_usuario)
@@ -25,7 +36,9 @@ async function postAutenticarUsuario(req, res) {
         if(usuario !== null){
             console.log('USUÁRIO AUTENTICADO');
             req.session.autorizado = true;
-            req.session.usuario = usuario;
+            req.session.id_usuario = usuario.id;
+            req.session.nome_usuario = usuario.nome;
+            req.session.email_usuario = usuario.email;
             res.redirect('/');
         } else {
             res.redirect('/user/login?erro_login=1');
@@ -89,5 +102,6 @@ module.exports = {
     loginView,
     cadastroView,
     postCadastrarUsuario,
-    postAutenticarUsuario
+    postAutenticarUsuario,
+    verificarAutenticacao
 }

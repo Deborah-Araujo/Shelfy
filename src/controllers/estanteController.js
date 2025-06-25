@@ -5,23 +5,22 @@ function estantesView(req, res) {
 }
 
 function postAdicionarEstante(req, res){
-    const user_id = req.session.id;
+    const user_id = req.session.id_usuario;
 
-    console.log('fk_id_usuario:', user_id);
-
+    console.log('user_id:', user_id); // tem que imprimir 1, 2, 3...
 
     const dados_estante = {
-        ...req.body,
-        id_dono: user_id
+    ...req.body,
+    fk_id_usuario: user_id
     };
 
     erro_campos = validarCampos(dados_estante)
 
     if (!erro_campos) {
-        Estante.create(dados_estante).then(()=>{
-            res.redirect('/');
+        Estante.create(dados_estante).then(() => res.redirect('/estantes/todas')).catch((err) => {
+            console.error('Erro ao criar estante:', err);
+            res.status(500).send('Erro ao salvar estante');
         });
-
     } else {
         console.log("Erro aqui")
         res.redirect('/');

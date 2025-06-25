@@ -10,12 +10,12 @@ const Estante = db.define('estante', {
     tema: {type: Sequelize.STRING, allowNull: false},
     cor: {type: Sequelize.STRING, allowNull: false},
     descricao: {type: Sequelize.STRING, allowNull: true},
-    id_dono: {type: Sequelize.INTEGER, allowNull: false}
+    fk_id_usuario: {type: Sequelize.INTEGER, allowNull: false}
 });
 
 // Associação aqui:
-// Estante.belongsTo(Usuario, {
-//     foreignKey: 'fk_id_usuario'
-// });
+Estante.belongsTo(Usuario, {
+    foreignKey: 'fk_id_usuario'
+});
 
 module.exports = Estante;

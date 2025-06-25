@@ -1,5 +1,5 @@
-// const Usuario = require('../models/usuarioModel');
-// const Estante = require('../models/estanteModel');
+// const Usuario = require('./usuarioModel');
+// const Estante = require('./estanteModel');
 
 // // agora sim, com todos carregados, podemos associar
 // Usuario.hasMany(Estante, { foreignKey: 'fk_id_usuario' });

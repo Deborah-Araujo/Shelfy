@@ -25,8 +25,6 @@ app.use('/', require('./src/routes/homepageRoutes'))
 app.use('/user', require('./src/routes/usuarioRoutes')) //Fica sendo um prefixo pras rotas, por exemplo, pra acessar login, por exemplo, tem que acessar: /user/login
 app.use('/estantes', require('./src/routes/estanteRoutes'))
 
-// const { Usuario, Estante } = require('./src/models');
-
 db.sync();
 
 const PORT = 8080;
