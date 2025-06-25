@@ -7,9 +7,12 @@ app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
 app.set('views', __dirname + '/src/views');
 
+app.use(express.static(__dirname + '/static'));
+
 app.use(express.urlencoded({extended: true}));
 
 app.use('/', require('./src/routes/homepageRoutes')) 
+app.use('/login', require('./src/routes/loginRoutes')) 
 
 const PORT = 8080;
 app.listen(PORT, ()=>{
