@@ -24,12 +24,21 @@
             {{/erro_campos}}
 
             <button class="novo-btn" onclick="openPopup()">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button>
+
                 <div class="container d-flex justify-content-center">
                     {{#estantes}}
 
-                        <div class="estante">
-                            {{nome}}
-                        </div>
+                    <button type="button" class="external-btn btn" data-bs-toggle="dropdown" style="display: flex; margin-right: 2rem;">
+                            <div class="estante">
+                                {{nome}}
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu" style="margin-top: 0.8rem; margin-left: -2.2rem; height: 7.3rem; text-align: right;">
+                            <li class="dropdown-item1"> <a href="/estantes/{{id}}"> Visualizar</a></li>
+                            <li class="dropdown-item2"><a href="">Editar</a></li>
+                            <li class="dropdown-item3"><a href="">Adicionar livro</a></li>
+                            <li class="dropdown-item4"><a href="">Remover</a></li>
+                        </ul>
 
                     {{/estantes}}
                 </div>

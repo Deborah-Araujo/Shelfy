@@ -8,10 +8,21 @@ async function estantesView(req, res) {
   res.render('estantes.html', { estantes });
 }
 
+async function estante_unicaView(req, res) {
+  const id = req.params.id;
+
+  const estante = await Estante.findOne({
+        where: {
+        id: id,
+        fk_id_usuario: req.session.id_usuario
+        }
+  });
+
+  res.render('estante_unica.html', { estante });
+}
+
 function postAdicionarEstante(req, res){
     const user_id = req.session.id_usuario;
-
-    console.log('user_id:', user_id); // tem que imprimir 1, 2, 3...
 
     const dados_estante = {
     ...req.body,
@@ -55,5 +66,6 @@ function validarCampos(dados_estante) {
 
 module.exports = {
     estantesView,
-    postAdicionarEstante
+    postAdicionarEstante,
+    estante_unicaView
 }
