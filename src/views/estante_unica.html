@@ -15,6 +15,7 @@
 </head>
     <main>
         {{#estante}}
+
             <div class="container estante">
 
                 <button type="button" class="external-btn btn" data-bs-toggle="dropdown" style="display: flex; margin-right: 2rem;">
@@ -44,6 +45,11 @@
             </div>
         {{/estante}}    
     </main>
+
+        <ul class="dropdown-menu menuEstante" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Ação 1</a></li>
+            <li><a class="dropdown-item" href="#">Ação 2</a></li>
+        </ul>
 
     <div class="popup" id="popup">
         <div class="popup-content">
@@ -84,13 +90,13 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </body>
 </html>
 
 <script>
+
 function openPopup(element) {
     const idEstante = element.getAttribute('data-id-estante');
     const nomeEstante = element.getAttribute('data-nome-estante');

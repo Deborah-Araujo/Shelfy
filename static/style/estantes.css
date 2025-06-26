@@ -43,6 +43,14 @@ body {
     border-radius: 15px;
 }
 
+.popup-editar-content {
+    width: 35rem;
+    background: linear-gradient(to right, #d2c3b2, #FAECDC);
+    color: #63524A;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
 .popup-content h6 {
     padding-bottom: 1.5rem;
     margin-bottom: 2rem;

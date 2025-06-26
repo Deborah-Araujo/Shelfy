@@ -39,7 +39,7 @@ async function postAutenticarUsuario(req, res) {
             req.session.id_usuario = usuario.id;
             req.session.nome_usuario = usuario.nome;
             req.session.email_usuario = usuario.email;
-            res.redirect('/');
+            res.redirect('/estantes/todas');
         } else {
             res.redirect('/user/login?erro_login=1');
         }
@@ -98,10 +98,16 @@ function validarCamposCadastro(dados_cadastro) {
     return erro_form
 }
 
+function logout(req, res){
+    req.session.destroy();
+    res.redirect('/user/login');
+}
+
 module.exports = {
     loginView,
     cadastroView,
     postCadastrarUsuario,
     postAutenticarUsuario,
-    verificarAutenticacao
+    verificarAutenticacao,
+    logout
 }

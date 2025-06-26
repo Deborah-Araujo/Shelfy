@@ -27,26 +27,14 @@ async function estante_unicaView(req, res) {
     console.log(estante.livros)
 
     res.render('estante_unica.html', { estante });
-
-    // res.render('estante_unica.html', {
-    // estante: {
-    //     nome_estante: estante.nome,
-    //     id_estante: estante.id,
-
-    //     livros: estante.livros.map(livro => ({
-    //     nome_livro: livro.nome,
-    //     autor: livro.autor
-    //     }))
-    // }
-    // });
 }
 
 function postAdicionarEstante(req, res){
     const user_id = req.session.id_usuario;
 
     const dados_estante = {
-    ...req.body,
-    fk_id_usuario_estante: user_id
+        ...req.body,
+        fk_id_usuario_estante: user_id
     };
 
     erro_campos = validarCampos(dados_estante)
@@ -59,6 +47,37 @@ function postAdicionarEstante(req, res){
     } else {
         console.log("Erro aqui")
         res.redirect('/');
+    }
+}
+
+function postEditarEstante(req, res) {
+    const dados_estante = {
+        ...req.body,
+        fk_id_usuario_estante: req.session.id_usuario
+    };
+
+    erro_campos = validarCampos(dados_estante)
+
+    if (!erro_campos) {
+        Estante.update(dados_estante, { where: { id_estante: req.params.id } }).then(() => res.redirect('/estantes/todas')).catch((err) => {
+            console.error('Erro ao editar estante:', err);
+            res.status(500).send('Erro ao editar estante');
+        });
+    } else {
+        console.log("Erro aqui")
+        res.redirect('/');
+    }    
+}
+
+async function postDeletarEstante(req, res) {
+    try {
+        const id = req.params.id;
+        await Estante.destroy({ where: { id_estante: id } });
+
+        res.redirect('/estantes/todas');
+    } catch (error) {
+        console.error('Erro ao deletar estante:', error);
+        res.status(500).send('Erro ao deletar estante');
     }
 }
 
@@ -86,6 +105,8 @@ function validarCampos(dados_estante) {
 
 module.exports = {
     estantesView,
+    estante_unicaView,
     postAdicionarEstante,
-    estante_unicaView
+    postEditarEstante,
+    postDeletarEstante
 }
