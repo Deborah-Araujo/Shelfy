@@ -60,18 +60,19 @@
             </div>
         </div>
 
-        <div class="container d-flex flex-wrap justify-content-center">
+        <div class="container d-flex flex-wrap">
+            <div class="row row-cols-3">
             {{#estantes}}
 
                 <!-- TESTE - DROPDOWN MENU -->
-                <div class="context-menu-wrapper position-relative">
+                <div class="col context-menu-wrapper position-relative">
                     <a href="/estantes/{{id_estante}}" class="estante-card" oncontextmenu="abrirMenuContexto(event, this)"
                         data-id-estante="{{id_estante}}"
                         data-nome-estante="{{nome_estante}}"
                         data-tema-estante="{{tema_estante}}"
                         data-cor-estante="{{cor_estante}}"
-                        data-descricao-estante="{{descricao_estante}}"
-                    >
+                        data-descricao-estante="{{descricao_estante}}">
+
                         <img src="/static/images/estante-cheia.png" alt="Estante" class="estante-img">
                         <h5 class="estante-nome">{{nome_estante}}</h5>
                         <p class="estante-descricao">{{descricao_estante}}</p>
@@ -84,6 +85,7 @@
                 </div>
 
             {{/estantes}}
+            </div>
         </div>
     </main>
 
