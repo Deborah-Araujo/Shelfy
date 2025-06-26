@@ -39,7 +39,7 @@ async function postAutenticarUsuario(req, res) {
             req.session.id_usuario = usuario.id;
             req.session.nome_usuario = usuario.nome;
             req.session.email_usuario = usuario.email;
-            res.redirect('/');
+            res.redirect('/estantes/todas');
         } else {
             res.redirect('/user/login?erro_login=1');
         }

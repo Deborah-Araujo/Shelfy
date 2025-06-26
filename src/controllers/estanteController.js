@@ -56,7 +56,7 @@ function postEditarEstante(req, res) {
     erro_campos = validarCampos(dados_estante)
 
     if (!erro_campos) {
-        Estantemodels.Model.update(updateValues, { where: { id_estante: req.params.id } }).then(() => res.redirect('/estantes/todas')).catch((err) => {
+        Estante.update(dados_estante, { where: { id_estante: req.params.id } }).then(() => res.redirect('/estantes/todas')).catch((err) => {
             console.error('Erro ao editar estante:', err);
             res.status(500).send('Erro ao editar estante');
         });
@@ -64,6 +64,13 @@ function postEditarEstante(req, res) {
         console.log("Erro aqui")
         res.redirect('/');
     }    
+}
+
+function postDeletarEstante(req, res) {
+    Estante.destroy({ where: { id: req.body.id }}).then(() => res.redirect('/estantes/todas')).catch(error => {
+        res.status(500).send('Erro ao editar estante');
+        console.error('Error deleting user:', error);
+    });
 }
 
 function validarCampos(dados_estante) {
@@ -90,7 +97,8 @@ function validarCampos(dados_estante) {
 
 module.exports = {
     estantesView,
-    postAdicionarEstante,
     estante_unicaView,
-    postEditarEstante
+    postAdicionarEstante,
+    postEditarEstante,
+    postDeletarEstante
 }

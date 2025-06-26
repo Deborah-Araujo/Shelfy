@@ -33,7 +33,7 @@
             <img src="/static/images/icon-vertical.png" alt="">
 
             <ul>
-                <li><a href="#"><span class="icon">🏠</span> <span class="text">Home</span></a></li>
+                <li><a href="/"><span class="icon">🏠</span> <span class="text">Home</span></a></li>
                 <li><a href="#"><span class="icon">📚</span> <span class="text">Minhas Estantes</span></a></li>
                 <li><a href="#"><span class="icon">⚙️</span> <span class="text">Configurações</span></a></li>
             </ul>
@@ -50,11 +50,24 @@
 
             <div class="container d-flex justify-content-center">
                 {{#estantes}}
-                        <a href="/estantes/{{id_estante}}">
-                            <div class="estante">
-                            {{nome_estante}}
-                            </div>
-                        </a>
+                    <div class="dropdown context-menu-container">
+                        <button class="menuEstante btn btn-secondary">
+                            <a href="/estantes/{{id_estante}}">
+                                <div class="estante">
+                                    {{nome_estante}}
+                                </div>
+                            </a>
+                        </button>
+
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" 
+                                data-nome-estante="{{nome_estante}}" data-tema-estante="{{tema_estante}}" 
+                                data-cor-estante="{{cor_estante}}" data-descricao-estante="{{descricao_estante}}" 
+                                data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</button></li>
+
+                            <li><button class="dropdown-item" href="/outra-rota">Deletar</button></li>
+                        </ul>
+                    </div>
                 {{/estantes}}
             </div>
         </div>
@@ -102,13 +115,88 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
 
+    <div class="popup" id="popup-editar">
+        <div class="popup-editar-content">
+
+            <h6>Editar estante</span></h6>
+
+            <form method="POST" class="form-editar">
+                <div class="novo-form">
+                    <div class="row">
+                        <label for="nome_estante_editar">Nome:</label>
+                        <input type="text" id="nome_estante_editar" name="nome_estante">
+                    </div>
+
+                    <div class="row ajustify-content-between">
+                        <div class="col-9">
+                            <label for="tema_estante_editar">Tema:</label>
+                            <input type="text" id="tema_estante_editar" name="tema_estante">
+                        </div>
+
+                        <div class="col-3">
+                            <label for="cor_estante_editar">Cor:</label>
+                            <select id="cor_estante_editar" name="cor_estante">
+                                    <option value="#F06365">Vermelho</option>
+                                    <option value="#4B3F6E">Azul</option>
+                                    <option value="#90A8DF">Azul claro</option>
+                                    <option value="#86BD96">Verde</option>
+                                    <option value="#DCD7D5">Cinza</option>
+                                    <option value="#9C8CB9">Roxo</option>
+                                    <option value="#F4B166">Laranja</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="descricao_estante_editar">Descrição:</label>
+                        <textarea type="text" id="descricao_estante_editar" name="descricao_estante"></textarea>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                        <button class="submit-btn">Salvar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
 </html>
 
 <script>
+    // Referente ao dropdown da estante
+    document.addEventListener('DOMContentLoaded', () => {
+        const botoes = document.querySelectorAll('.menuEstante');
+
+        botoes.forEach((btn) => {
+            const dropdown = new bootstrap.Dropdown(btn, { autoClose: true });
+
+            btn.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+
+            // posiciona o menu
+            const menu = btn.nextElementSibling;
+                menu.style.display = 'block';
+                menu.classList.add('show');
+            });
+
+            // fecha dropdown ao clicar fora
+            document.addEventListener('click', (e) => {
+                const menu = btn.nextElementSibling;
+
+                if (!menu.contains(e.target)) {
+                    menu.classList.remove('show');
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    // Referente ao de adicionar nova estante
     function openPopup() {
         document.getElementById('popup').style.display = 'flex';
     }
@@ -124,6 +212,7 @@
 </script>
 
 <script>
+    // Referente a sidebar
     const sidebar = document.getElementById('sidebar');
     const main = document.querySelector('main');
     const toggleButton = document.getElementById('toggle-expand');
@@ -132,7 +221,38 @@
     sidebar.classList.toggle('expanded');
     main.classList.toggle('expanded');
 
-    toggleButton.textContent = sidebar.classList.contains('expanded') ? '⬅️' : '➡️';
+        toggleButton.textContent = sidebar.classList.contains('expanded') ? '⬅️' : '➡️';
     });
 
+</script>
+
+<script>
+        const popupEditar = document.getElementById('popup-editar');
+        const contentEditar = document.querySelector('.popup-editar-content');
+
+        popupEditar.addEventListener('click', function(event) {
+            if (!contentEditar.contains(event.target)) {
+                popupEditar.style.display = 'none';
+            }
+        });
+
+        function openPopupEditar(elemento) {
+            id = elemento.getAttribute('data-id-estante')
+            console.log("id da estante: ", id)
+            nome = elemento.getAttribute('data-nome-estante');
+
+            tema = elemento.getAttribute('data-tema-estante');
+            cor = elemento.getAttribute('data-cor-estante');
+            descricao = elemento.getAttribute('data-descricao-estante');
+
+            const form_editar = popupEditar.querySelector('.form-editar');
+            form_editar.action = `/estantes/editar/${id}`;
+
+            document.getElementById('nome_estante_editar').value = nome;
+            document.getElementById('tema_estante_editar').value = tema;
+            document.getElementById('cor_estante_editar').value = cor;
+            document.getElementById('descricao_estante_editar').value = descricao;
+
+            document.getElementById('popup-editar').style.display = 'flex';
+        }
 </script>
