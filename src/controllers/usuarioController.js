@@ -98,10 +98,16 @@ function validarCamposCadastro(dados_cadastro) {
     return erro_form
 }
 
+function logout(req, res){
+    req.session.destroy();
+    res.redirect('/user/login');
+}
+
 module.exports = {
     loginView,
     cadastroView,
     postCadastrarUsuario,
     postAutenticarUsuario,
-    verificarAutenticacao
+    verificarAutenticacao,
+    logout
 }

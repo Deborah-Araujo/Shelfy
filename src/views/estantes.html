@@ -14,7 +14,6 @@
     
 </head>
 <body>
-
     <main>
         <div class="container d-flex justify-content-center">
             {{#erro_campos}}
@@ -25,15 +24,15 @@
 
             <button class="novo-btn" onclick="openPopup()">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button>
 
-                <div class="container d-flex justify-content-center">
-                    {{#estantes}}
-                            <a href="/estantes/{{id_estante}}">
-                                <div class="estante">
-                                {{nome_estante}}
-                                </div>
-                            </a>
-                    {{/estantes}}
-                </div>
+            <div class="container d-flex justify-content-center">
+                {{#estantes}}
+                        <a href="/estantes/{{id_estante}}">
+                            <div class="estante">
+                            {{nome_estante}}
+                            </div>
+                        </a>
+                {{/estantes}}
+            </div>
         </div>
     </main>
 

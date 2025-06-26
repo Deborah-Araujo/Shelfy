@@ -1,7 +1,7 @@
 .estante {
-    background-color: blueviolet;
-    width: 200px;
-    height: 200px;
+    background-color: rgba(217, 175, 255, 0.63);
+    width: 60%;
+    height: 500px;
 }
 
 .popup {
@@ -84,8 +84,8 @@
 }
 
 .livro {
-    background-color: #63524A;
-    width: 5px;
-    height: 10px;
-    margin: 3rem;
+    background-color: #826f66be;
+    width: 6rem;
+    height: 10rem;
+    margin: 1rem;
 }
