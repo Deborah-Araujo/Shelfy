@@ -83,6 +83,14 @@
     border-radius: 10px;
 }
 
+.popup-editar-content {
+    width: 35rem;
+    background: linear-gradient(to right, #d2c3b2, #FAECDC);
+    color: #63524A;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
 .livro {
     background-color: #826f66be;
     width: 6rem;
