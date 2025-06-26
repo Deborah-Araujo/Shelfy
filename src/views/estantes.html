@@ -130,7 +130,7 @@
     <div class="popup" id="popup-editar">
         <div class="popup-editar-content">
 
-            <h6>Editar estante</span></h6>
+            <h6>Editar estante</h6>
 
             <form method="POST" class="form-editar">
                 <div class="novo-form">
@@ -236,34 +236,34 @@
 </script>
 
 <script>
-        const popupEditar = document.getElementById('popup-editar');
-        const contentEditar = document.querySelector('.popup-editar-content');
+    const popupEditar = document.getElementById('popup-editar');
+    const contentEditar = document.querySelector('.popup-editar-content');
 
-        popupEditar.addEventListener('click', function(event) {
-            if (!contentEditar.contains(event.target)) {
-                popupEditar.style.display = 'none';
-            }
-        });
-
-        function openPopupEditar(elemento) {
-            id = elemento.getAttribute('data-id-estante')
-            console.log("id da estante: ", id)
-            nome = elemento.getAttribute('data-nome-estante');
-
-            tema = elemento.getAttribute('data-tema-estante');
-            cor = elemento.getAttribute('data-cor-estante');
-            descricao = elemento.getAttribute('data-descricao-estante');
-
-            const form_editar = popupEditar.querySelector('.form-editar');
-            form_editar.action = `/estantes/editar/${id}`;
-
-            document.getElementById('nome_estante_editar').value = nome;
-            document.getElementById('tema_estante_editar').value = tema;
-            document.getElementById('cor_estante_editar').value = cor;
-            document.getElementById('descricao_estante_editar').value = descricao;
-
-            document.getElementById('popup-editar').style.display = 'flex';
+    popupEditar.addEventListener('click', function(event) {
+        if (!contentEditar.contains(event.target)) {
+            popupEditar.style.display = 'none';
         }
+    });
+
+    function openPopupEditar(elemento) {
+        id = elemento.getAttribute('data-id-estante')
+        console.log("id da estante: ", id)
+        nome = elemento.getAttribute('data-nome-estante');
+
+        tema = elemento.getAttribute('data-tema-estante');
+        cor = elemento.getAttribute('data-cor-estante');
+        descricao = elemento.getAttribute('data-descricao-estante');
+
+        const form_editar = popupEditar.querySelector('.form-editar');
+        form_editar.action = `/estantes/editar/${id}`;
+
+        document.getElementById('nome_estante_editar').value = nome;
+        document.getElementById('tema_estante_editar').value = tema;
+        document.getElementById('cor_estante_editar').value = cor;
+        document.getElementById('descricao_estante_editar').value = descricao;
+
+        document.getElementById('popup-editar').style.display = 'flex';
+    }
 </script>
 
 <script>

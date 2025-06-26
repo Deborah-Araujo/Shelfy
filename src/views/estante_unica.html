@@ -15,41 +15,72 @@
 </head>
     <main>
         {{#estante}}
+            <button class="novo-btn" 
+                data-id-estante="{{id_estante}}" 
+                data-nome-estante="{{nome_estante}}" 
+                onclick="openPopup(this)">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button>
 
             <div class="container estante">
-
-                <button type="button" class="external-btn btn" data-bs-toggle="dropdown" style="display: flex; margin-right: 2rem;">
                     {{nome_estante}}
 
                     {{#estante.livros}}
-                        <div class="livro">
-                            <p>{{titulo_livro}}</p>
-                            <p>{{autor_livro}}</p>
-                        </div>
+                        <button type="button" class="external-btn" data-bs-toggle="dropdown" style="display: flex; margin-right: 2rem;">
+                            <div class="livro">
+                                <p>{{titulo_livro}}</p>
+                                <p>{{autor_livro}}</p>
+                            </div>
+                        </button>
+
+                        <ul class="dropdown-menu" style="margin-top: 0.8rem; margin-left: 2rem; height: 7.3rem; text-align: right;">
+                            <li class="dropdown-item2" data-titulo-livro="{{titulo_livro}}" data-autor-livro="{{autor_livro}}"
+                            data-status-livro="{{status_livro}}" data-descricao-livro="{{livro_descricao}}" onclick="openPopupDetalhes(this)">Detalhes</li>
+
+                            <li class="dropdown-item3" data-id-livro="{{id_livro}}" data-titulo-livro="{{titulo_livro}}" data-autor-livro="{{autor_livro}}"
+                            data-status-livro="{{status_livro}}" data-descricao-livro="{{descricao_livro}}" data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</li>
+
+                            <li class="dropdown-item4"data-id-estante="{{id_estante}}" data-id-livro="{{id_livro}}" onclick='mostrarCaixa(this)'>Remover</li>
+                        </ul>
+
                     {{/estante.livros}}
-                </button>
-
-                <ul class="dropdown-menu" style="margin-top: 0.8rem; margin-left: 2rem; height: 7.3rem; text-align: right;">
-
-                    <li class="dropdown-item2">Editar</li>
-                    
-                    <li class="dropdown-item3" 
-                        data-id-estante="{{id_estante}}" 
-                        data-nome-estante="{{nome_estante}}" 
-                        onclick="openPopup(this)">
-                        Adicionar livro
-                    </li>
-                    <li class="dropdown-item4">Remover</li>
-                </ul>
-
             </div>
         {{/estante}}    
     </main>
 
-        <ul class="dropdown-menu menuEstante" aria-labelledby="dropdownMenuButton">
+        <!-- <ul class="dropdown-menu menuEstante" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#">Ação 1</a></li>
             <li><a class="dropdown-item" href="#">Ação 2</a></li>
-        </ul>
+        </ul> -->
+
+    <div class="popup" id="popup-detalhes">
+        <div class="popup-content content-detalhes">
+
+            <h6 id="nome-livro-detalhes"></h6>
+
+            <div class="novo-form">
+                <div class="row">
+                    <p><span id="titulo_livro_detalhes"></span></p>
+                </div>
+
+                <div class="row ajustify-content-between">
+                    <div class="col-4">
+                       <p>Status:  <span id="status_livro_detalhes"></span></p>
+                    </div>
+
+                    <div class="col-8">
+                        <p>Autor: <span id="autor_livro_detalhes"></span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p>Descrição: <span id="descricao_livro_detalhes"></span></p>
+                </div>
+
+                <div class="row d-flex justify-content-center">
+                    <button class="submit-btn">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="popup" id="popup">
         <div class="popup-content">
@@ -75,13 +106,13 @@
                         </div>
 
                         <div class="col-8">
-                            <label for="autor_livro">Autor:</label>
+                            <label for="autor_livro">Autor: </label>
                             <input type="text" id="autor_livro" name="autor_livro">
                         </div>
                     </div>
 
                     <div class="row">
-                        <label for="descricao_livro">Descrição:</label>
+                        <label for="descricao_livro">Descrição: </label>
                         <textarea type="text" id="descricao_livro" name="descricao_livro"></textarea>
                     </div>
 
@@ -92,37 +123,152 @@
             </form>
         </div>
     </div>
+
+    <div class="popup" id="popup-editar">
+        <div class="popup-editar-content">
+
+            <h6>Editar livro</h6>
+
+            <form method="POST" class="form-editar">
+                <div class="novo-form">
+                    <div class="row">
+                        <label for="titulo_livro_editar">Título:</label>
+                        <input type="text" id="titulo_livro_editar" name="titulo_livro">
+                    </div>
+
+                    <div class="row ajustify-content-between">
+                        <div class="col-9">
+                            <label for="autor_livro_editar">Tema:</label>
+                            <input type="text" id="autor_livro_editar" name="autor_livro">
+                        </div>
+
+                        <div class="col-3">
+                            <label for="status_livro_editar">Status de leitura:</label>
+                            <select name="status_livro" id="status_livro_editar">
+                                <option value="Terminado">Terminado</option>
+                                <option value="Lendo">Lendo</option>
+                                <option value="Não iniciado">Não iniciado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label for="descricao_livro_editar">Descrição:</label>
+                        <textarea type="text" id="descricao_livro_editar" name="descricao_livro"></textarea>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                        <button class="submit-btn">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
 
 <script>
+    const popupDetalhes = document.getElementById('popup-detalhes');
+    const contentDetalhes = document.querySelector('.popup-content');
 
-function openPopup(element) {
-    const idEstante = element.getAttribute('data-id-estante');
-    const nomeEstante = element.getAttribute('data-nome-estante');
+    popupDetalhes.addEventListener('click', function(event) {
+        if (!contentDetalhes.contains(event.target)) {
+            popupDetalhes.style.display = 'none';
+        }
+    });
 
-    // Exibe o popup
+    function openPopupDetalhes(elemento) {
+        titulo = elemento.getAttribute('data-titulo-livro');
+        autor = elemento.getAttribute('data-autor-livro');
+        status = elemento.getAttribute('data-status-livro');
+        descricao = elemento.getAttribute('data-descricao-livro');
+        id_estante = elemento.getAttribute('data-id-estante')
+
+        document.getElementById('titulo_livro_detalhes').textContent = titulo;
+        document.getElementById('autor_livro_detalhes').textContent = autor;
+        document.getElementById('status_livro_detalhes').textContent = status;
+        document.getElementById('descricao_livro_detalhes').textContent = descricao || '';
+
+        document.getElementById('popup-detalhes').style.display = 'flex';
+    }
+</script>
+
+<script>
+    const popupEditar = document.getElementById('popup-editar');
+    const contentEditar = document.querySelector('.popup-editar-content');
+
+    popupEditar.addEventListener('click', function(event) {
+        if (!contentEditar.contains(event.target)) {
+            popupEditar.style.display = 'none';
+        }
+    });
+
+    function openPopupEditar(elemento) {
+        id = elemento.getAttribute('data-id-livro');
+        titulo = elemento.getAttribute('data-titulo-livro');
+        autor = elemento.getAttribute('data-autor-livro');
+        status = elemento.getAttribute('data-status-livro');
+        descricao = elemento.getAttribute('data-descricao-livro');
+        id_estante = elemento.getAttribute('data-id-estante')
+
+        const form_editar = popupEditar.querySelector('.form-editar');
+        form_editar.action = `/livro/editar/${id_estante}/${id}`;
+
+        document.getElementById('titulo_livro_editar').value = titulo;
+        document.getElementById('autor_livro_editar').value = autor;
+        document.getElementById('status_livro_editar').value = status;
+        document.getElementById('descricao_livro_editar').value = descricao || '';
+
+        document.getElementById('popup-editar').style.display = 'flex';
+    }
+</script>
+
+<script>
+    function openPopup(element) {
+        const idEstante = element.getAttribute('data-id-estante');
+        const nomeEstante = element.getAttribute('data-nome-estante');
+
+        // Exibe o popup
+        const popup = document.getElementById('popup');
+        popup.style.display = 'flex';
+
+        // Atualiza o action do form
+        const form = popup.querySelector('form');
+        form.action = `/livro/adicionar/${idEstante}`;
+
+        // Atualizar o título no popup com o nome da estante
+        const titulo = popup.querySelector('.nome-estante');
+        if (titulo) {
+            titulo.textContent = nomeEstante;
+        }
+    }
+
+    // Fecha o popup ao clicar fora do conteúdo
     const popup = document.getElementById('popup');
-    popup.style.display = 'flex';
+    const content = document.querySelector('.popup-content');
 
-    // Atualiza o action do form
-    const form = popup.querySelector('form');
-    form.action = `/livro/adicionar/${idEstante}`;
+    popup.addEventListener('click', function(event) {
+        if (!content.contains(event.target)) {
+            popup.style.display = 'none';
+        }
+    });
+</script>
 
-    // Atualizar o título no popup com o nome da estante
-    const titulo = popup.querySelector('.nome-estante');
-    if (titulo) {
-        titulo.textContent = nomeEstante;
+<script>
+    function mostrarCaixa(elemento) {
+        const resposta = confirm("Deseja realmente deletar o livro?");
+        if (resposta) {
+            const id_estante = elemento.getAttribute('data-id-estante');
+            const id_livro = elemento.getAttribute('data-id-livro');
+
+            fetch(`/livro/deletar/${id_estante}/${id_livro}`, { method: 'POST' }).then(res => {
+                if (res.redirected) {
+                    window.location.href = res.url;
+                } else {
+                    alert('Livro deletada!');
+                    location.reload();
+                }
+            });
+        }
     }
-}
-
-// Fecha o popup ao clicar fora do conteúdo
-const popup = document.getElementById('popup');
-const content = document.querySelector('.popup-content');
-
-popup.addEventListener('click', function(event) {
-    if (!content.contains(event.target)) {
-        popup.style.display = 'none';
-    }
-});
 </script>
