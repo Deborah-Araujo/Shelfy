@@ -7,7 +7,10 @@ async function estantesView(req, res) {
     where: { fk_id_usuario_estante: req.session.id_usuario }
   });
 
-  res.render('estantes.html', { estantes });
+//   teste
+  const nomeUsuario = req.session.nome_usuario;
+
+  res.render('estantes.html', { estantes, nomeUsuario });
 }
 
 async function estante_unicaView(req, res) {
