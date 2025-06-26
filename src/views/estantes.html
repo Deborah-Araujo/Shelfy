@@ -60,29 +60,27 @@
             </div>
         </div>
 
-        <div class="container d-flex justify-content-center">
-            <div class="container d-flex justify-content-center">
-                {{#estantes}}
-                    <div class="dropdown context-menu-container">
-                        <button class="menuEstante btn btn-secondary">
-                            <a href="/estantes/{{id_estante}}">
-                                <div class="estante">
-                                    {{nome_estante}}
-                                </div>
-                            </a>
-                        </button>
+        <div class="container d-flex flex-wrap justify-content-center">
+            {{#estantes}}
+                <div class="dropdown context-menu-container">
+                    <button class="menuEstante btn btn-secondary">
+                        <a href="/estantes/{{id_estante}}">
+                            <div class="estante">
+                                {{nome_estante}}
+                            </div>
+                        </a>
+                    </button>
 
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" 
-                                data-nome-estante="{{nome_estante}}" data-tema-estante="{{tema_estante}}" 
-                                data-cor-estante="{{cor_estante}}" data-descricao-estante="{{descricao_estante}}" 
-                                data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</button></li>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-item" 
+                            data-nome-estante="{{nome_estante}}" data-tema-estante="{{tema_estante}}" 
+                            data-cor-estante="{{cor_estante}}" data-descricao-estante="{{descricao_estante}}" 
+                            data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</button></li>
 
-                            <li><button class="dropdown-item" data-id-estante="{{id_estante}}" onclick='mostrarCaixa(this)'>Deletar</button></li>
-                        </ul>
-                    </div>
-                {{/estantes}}
-            </div>
+                        <li><button class="dropdown-item" data-id-estante="{{id_estante}}" onclick='mostrarCaixa(this)'>Deletar</button></li>
+                    </ul>
+                </div>
+            {{/estantes}}
         </div>
     </main>
 

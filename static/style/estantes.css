@@ -7,15 +7,18 @@ body {
 }
 
 .novo-btn {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     border: none;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-bottom: 0.3rem;
     padding-top: 0.3rem;
-    border-radius: 20px;
+    border-radius: 2.5rem;
     background-color: #86BD96;
     color: #DCD7D5;
+    width: 10rem;
+    height: 4rem;
+    margin-top: -0.5rem;
 }
 
 .icon {
@@ -24,8 +27,9 @@ body {
 }
 
 .icon-novo {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 0.5rem;
 }
 
 .popup {
