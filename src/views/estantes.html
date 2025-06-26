@@ -26,16 +26,27 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
 
-    <div id="sidebar">
-        <button id="toggle-expand" aria-label="Expandir ou recolher sidebar">➡️</button>
-        <img src="/static/images/icon-vertical.png" alt="">
+    <nav id="sidebar">
+        <button id="toggle-expand" aria-label="Expandir ou recolher sidebar"><img class="img-mobile" src="/static/images/tres-tracinhos.png" alt=""></button>
+        <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
 
         <ul>
-            <li><a href="#"><span class="icon">🏠</span> <span class="text">Home</span></a></li>
-            <li><a href="#"><span class="icon">📚</span> <span class="text">Minhas Estantes</span></a></li>
-            <li><a href="#"><span class="icon">⚙️</span> <span class="text">Configurações</span></a></li>
+            <li><a href="#"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
+            <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
+            <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
         </ul>
-    </div>
+
+        <!-- {% if current_user.is_authenticated %}
+            <div class="user-box">
+                <span class="image"><img src="/static/images/user-icon.png" alt=""></span>
+                <span class="text">{{current_user.nome}}</span>
+            </div>
+        {% endif %} -->
+            <div class="sidebar-footer">
+                <img src="/static/images/user-icon.png" alt="Usuário" class="user-img">
+                <span class="user-name">{{nomeUsuario}}</span>
+            </div>
+    </nav>
 
         <div class="container d-flex justify-content-center">
             {{#erro_campos}}
@@ -219,7 +230,7 @@
     sidebar.classList.toggle('expanded');
     main.classList.toggle('expanded');
 
-    toggleButton.textContent = sidebar.classList.contains('expanded') ? '⬅️' : '➡️';
+    // toggleButton.textContent = sidebar.classList.contains('expanded') ? '⬅️' : '➡️';
     });
 
 </script>
