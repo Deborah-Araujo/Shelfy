@@ -2,15 +2,30 @@ const Estante = require('../models/estanteModel');
 const Livro = require('../models/livroModel')
 // const livroController = require('../controllers/livroController')
 
+// TESTE - barra de busca
+const { Op } = require('sequelize');
+
 async function estantesView(req, res) {
-  const estantes = await Estante.findAll({
-    where: { fk_id_usuario_estante: req.session.id_usuario }
-  });
+    // TESTE - barra de busca
+    const termoBusca = req.query.busca || '';
 
-//   teste
-  const nomeUsuario = req.session.nome_usuario;
+    const estantes = await Estante.findAll({
+        where: { 
+            fk_id_usuario_estante: req.session.id_usuario,
+            nome_estante: {
+                [Op.like]: `%${termoBusca}%` // TESTE - barra de busca
+            }
+        }
+    });
 
-  res.render('estantes.html', { estantes, nomeUsuario });
+//buscando nome de usuario pra colocar na sidebar
+const nomeUsuario = req.session.nome_usuario;
+
+res.render('estantes.html', { 
+    estantes, 
+    nomeUsuario,
+    busca: termoBusca
+ });
 }
 
 async function estante_unicaView(req, res) {

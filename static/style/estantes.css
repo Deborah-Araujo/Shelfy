@@ -23,6 +23,11 @@ body {
     height: 4rem;
 }
 
+.icon-novo {
+    width: 2rem;
+    height: 2rem;
+}
+
 .popup {
     display: none; /* ou flex pra mostrar */
     position: fixed;
@@ -116,3 +121,14 @@ body {
     height: 200px;
 }
 
+/* Barra de pesquisa */
+.search-bar{
+    background-color: #E2D6C8;
+    border-radius: 1.2rem;
+    width: 45rem;
+}
+
+.search-img{
+    width: 2rem;
+    height: 2rem;
+}
