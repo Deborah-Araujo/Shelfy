@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="static/images/icone-teste.png" type="image/x-icon">
+    <link rel="icon" href="/static/images/icone-teste.png" type="image/x-icon">
     <title>Shelfy</title>
 
     <!-- Importando Bootstrap -->
@@ -46,7 +46,7 @@
 
                 <!-- TESTE - barra de pesquisa (mensagem de ERRO) -->
                 {{^estantes}}
-                    <div class="alert alert-warning text-center">Nenhuma estante encontrada com esse nome.</div>
+                    <div class="alert alert-warning text-center">Nenhuma estante encontrada.</div>
                 {{/estantes}}
             </div>
             <div class="col-4">
@@ -60,29 +60,30 @@
             </div>
         </div>
 
-        <div class="container d-flex justify-content-center">
-            <div class="container d-flex justify-content-center">
-                {{#estantes}}
-                    <div class="dropdown context-menu-container">
-                        <button class="menuEstante btn btn-secondary">
-                            <a href="/estantes/{{id_estante}}">
-                                <div class="estante">
-                                    {{nome_estante}}
-                                </div>
-                            </a>
-                        </button>
+        <div class="container d-flex flex-wrap justify-content-center">
+            {{#estantes}}
 
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" 
-                                data-nome-estante="{{nome_estante}}" data-tema-estante="{{tema_estante}}" 
-                                data-cor-estante="{{cor_estante}}" data-descricao-estante="{{descricao_estante}}" 
-                                data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</button></li>
+                <!-- TESTE - DROPDOWN MENU -->
+                <div class="context-menu-wrapper position-relative">
+                    <a href="/estantes/{{id_estante}}" class="estante-card" oncontextmenu="abrirMenuContexto(event, this)"
+                        data-id-estante="{{id_estante}}"
+                        data-nome-estante="{{nome_estante}}"
+                        data-tema-estante="{{tema_estante}}"
+                        data-cor-estante="{{cor_estante}}"
+                        data-descricao-estante="{{descricao_estante}}"
+                    >
+                        <img src="/static/images/estante-cheia.png" alt="Estante" class="estante-img">
+                        <h5 class="estante-nome">{{nome_estante}}</h5>
+                        <p class="estante-descricao">{{descricao_estante}}</p>
+                    </a>
 
-                            <li><button class="dropdown-item" data-id-estante="{{id_estante}}" onclick='mostrarCaixa(this)'>Deletar</button></li>
-                        </ul>
-                    </div>
-                {{/estantes}}
-            </div>
+                    <ul class="dropdown-menu estante-menu">
+                        <li><button class="dropdown-item" onclick="openPopupEditar(this)">Editar</button></li>
+                        <li><button class="dropdown-item" onclick="mostrarCaixa(this)">Deletar</button></li>
+                    </ul>
+                </div>
+
+            {{/estantes}}
         </div>
     </main>
 
@@ -178,27 +179,31 @@
 </body>
 </html>
 
+<!-- TESTE - DROPDOWN MENU -->
 <script>
-    // Referente ao dropdown da estante
     document.addEventListener('DOMContentLoaded', () => {
-        const botoes = document.querySelectorAll('.menuEstante');
+        const botoes = document.querySelectorAll('.estante-card');
 
         botoes.forEach((btn) => {
-            const dropdown = new bootstrap.Dropdown(btn, { autoClose: true });
-
             btn.addEventListener('contextmenu', (event) => {
-            event.preventDefault();
+                event.preventDefault();
 
-            // posiciona o menu
-            const menu = btn.nextElementSibling;
+                const menu = btn.parentElement.querySelector('.dropdown-menu');
                 menu.style.display = 'block';
                 menu.classList.add('show');
+
+                // passa os dados para os botões do menu
+                menu.querySelectorAll('.dropdown-item').forEach(item => {
+                    item.setAttribute('data-id-estante', btn.dataset.idEstante);
+                    item.setAttribute('data-nome-estante', btn.dataset.nomeEstante);
+                    item.setAttribute('data-tema-estante', btn.dataset.temaEstante);
+                    item.setAttribute('data-cor-estante', btn.dataset.corEstante);
+                    item.setAttribute('data-descricao-estante', btn.dataset.descricaoEstante);
+                });
             });
 
-            // fecha dropdown ao clicar fora
             document.addEventListener('click', (e) => {
-                const menu = btn.nextElementSibling;
-
+                const menu = btn.parentElement.querySelector('.dropdown-menu');
                 if (!menu.contains(e.target)) {
                     menu.classList.remove('show');
                     menu.style.display = 'none';
@@ -206,6 +211,7 @@
             });
         });
     });
+
 </script>
 
 <script>
