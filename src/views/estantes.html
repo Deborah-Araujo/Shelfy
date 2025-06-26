@@ -16,47 +16,51 @@
     <!-- Importando arquivos CSS -->
     <link rel="stylesheet" href="/static/style/estantes.css">
     <link rel="stylesheet" href="/static/style/side-bar.css">
-    
 </head>
 <body>
     <main>
-        <!-- Futura pesquisa na sidebar -->
-        <!-- <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
 
-    <nav id="sidebar">
-        <button id="toggle-expand" aria-label="Expandir ou recolher sidebar"><img class="img-mobile" src="/static/images/tres-tracinhos.png" alt=""></button>
-        <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
+        <nav id="sidebar">
+            <button id="toggle-expand" aria-label="Expandir ou recolher sidebar"><img class="img-mobile" src="/static/images/tres-tracinhos.png" alt=""></button>
+            <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
 
-        <ul>
-            <li><a href="#"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
-            <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
-            <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
-        </ul>
+            <ul>
+                <li><a href="#"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
+                <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
+                <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
+            </ul>
 
-        <!-- {% if current_user.is_authenticated %}
-            <div class="user-box">
-                <span class="image"><img src="/static/images/user-icon.png" alt=""></span>
-                <span class="text">{{current_user.nome}}</span>
+                <div class="sidebar-footer">
+                    <img src="/static/images/user-icon.png" alt="Usuário" class="user-img">
+                    <span class="user-name">{{nomeUsuario}}</span>
+                </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-8">
+                <!-- TESTE - barra de pesquisa -->
+                <form method="GET" action="/estantes/todas" class="mb-4 d-flex justify-content-center">
+                    <input type="text" name="busca" class="search-bar form-control me-2" placeholder="Pesquisar estante" value="{{busca}}">
+                    <button type="submit" class="btn search-btn"><img class="search-img" src="/static/images/lupa.png" alt=""></button>
+                </form>
+
+                <!-- TESTE - barra de pesquisa (mensagem de ERRO) -->
+                {{^estantes}}
+                    <div class="alert alert-warning text-center">Nenhuma estante encontrada com esse nome.</div>
+                {{/estantes}}
             </div>
-        {% endif %} -->
-            <div class="sidebar-footer">
-                <img src="/static/images/user-icon.png" alt="Usuário" class="user-img">
-                <span class="user-name">{{nomeUsuario}}</span>
+            <div class="col-4">
+                <button class="novo-btn" onclick="openPopup()">Novo<img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon-novo"></button>
+
+                {{#erro_campos}}
+                    <div class="alert alert-danger mt-2">
+                        <strong>Erro! </strong>Preencha todos os campos.
+                    </div>
+                {{/erro_campos}}
             </div>
-    </nav>
+        </div>
 
         <div class="container d-flex justify-content-center">
-            {{#erro_campos}}
-                <div class="alert alert-danger mt-2">
-                    <strong>Erro! </strong>Preencha todos os campos.
-                </div>
-            {{/erro_campos}}
-
-            <button class="novo-btn" onclick="openPopup()">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button>
-
             <div class="container d-flex justify-content-center">
                 {{#estantes}}
                     <div class="dropdown context-menu-container">
