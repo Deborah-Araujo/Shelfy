@@ -11,38 +11,90 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="/static/style/estante_unica.css">
+    <link rel="stylesheet" href="/static/style/side-bar.css">
     
 </head>
+
+    <nav id="sidebar">
+        <button id="toggle-expand" aria-label="Expandir ou recolher sidebar"><img class="img-mobile" src="/static/images/tres-tracinhos.png" alt=""></button>
+        <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
+
+        <ul>
+            <li><a href="/homepage"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
+            <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
+            <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <img src="/static/images/user-icon.png" alt="Usuário" class="user-img">
+            <span class="user-name">{{nomeUsuario}}</span>
+        </div>
+    </nav>
+
     <main>
-        {{#estante}}
-            <button class="novo-btn" 
+
+    {{#estante}}
+
+        <div class="row">
+            <div class="col-8">
+                <!-- TESTE - barra de pesquisa -->
+                <form method="GET" action="/estantes/todas" class="mb-4 d-flex justify-content-center">
+                    <input type="text" name="busca" class="search-bar form-control me-2" placeholder="Pesquisar estante" value="{{busca}}">
+                    <button type="submit" class="btn search-btn"><img class="search-img" src="/static/images/lupa.png" alt=""></button>
+                </form>
+
+                <!-- Tem que modificar pra procurar pelos livros aqui -->
+                <!-- {{#estantes}}
+                    <div class="alert alert-warning text-center">Nenhuma estante encontrada com esse nome.</div>
+                {{/estantes}} -->
+            </div>
+
+            <div class="col-4">
+                <button class="novo-btn" data-id-estante="{{id_estante}}" 
+                data-nome-estante="{{nome_estante}}" 
+                onclick="openPopup(this)">Novo<img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon-novo"></button>
+
+                {{#erro_campos}}
+                    <div class="alert alert-danger mt-2">
+                        <strong>Erro! </strong>Preencha todos os campos.
+                    </div>
+                {{/erro_campos}}
+            </div>
+
+        </div>
+            <!-- <button class="novo-btn" 
                 data-id-estante="{{id_estante}}" 
                 data-nome-estante="{{nome_estante}}" 
-                onclick="openPopup(this)">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button>
+                onclick="openPopup(this)">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button> -->
 
-            <div class="container estante">
-                    {{nome_estante}}
+            <h5> {{nome_estante}} </h5>
 
-                    {{#estante.livros}}
-                        <button type="button" class="external-btn" data-bs-toggle="dropdown" style="display: flex; margin-right: 2rem;">
-                            <div class="livro">
-                                <p>{{titulo_livro}}</p>
-                                <p>{{autor_livro}}</p>
-                            </div>
-                        </button>
+        <div class="container d-flex flex-block justify-content-center estante">
 
-                        <ul class="dropdown-menu" style="margin-top: 0.8rem; margin-left: 2rem; height: 7.3rem; text-align: right;">
-                            <li class="dropdown-item2" data-titulo-livro="{{titulo_livro}}" data-autor-livro="{{autor_livro}}"
-                            data-status-livro="{{status_livro}}" data-descricao-livro="{{livro_descricao}}" onclick="openPopupDetalhes(this)">Detalhes</li>
+            <div class="row prateleira">
+                {{#estante.livros}}
+                <div class="col dropdown">
+                    <button type="button" class="external-btn" data-bs-toggle="dropdown">
+                        <div class="livro"></div>
+                        <p>{{titulo_livro}}</p>
+                        <p>{{autor_livro}}</p>
+                    </button>
+    
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item" data-titulo-livro="{{titulo_livro}}" data-autor-livro="{{autor_livro}}"
+                        data-status-livro="{{status_livro}}" data-descricao-livro="{{livro_descricao}}" onclick="openPopupDetalhes(this)">Detalhes</li>
 
-                            <li class="dropdown-item3" data-id-livro="{{id_livro}}" data-titulo-livro="{{titulo_livro}}" data-autor-livro="{{autor_livro}}"
-                            data-status-livro="{{status_livro}}" data-descricao-livro="{{descricao_livro}}" data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</li>
+                        <li class="dropdown-item" data-id-livro="{{id_livro}}" data-titulo-livro="{{titulo_livro}}" data-autor-livro="{{autor_livro}}"
+                        data-status-livro="{{status_livro}}" data-descricao-livro="{{descricao_livro}}" data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</li>
 
-                            <li class="dropdown-item4"data-id-estante="{{id_estante}}" data-id-livro="{{id_livro}}" onclick='mostrarCaixa(this)'>Remover</li>
-                        </ul>
+                        <li class="dropdown-item"data-id-estante="{{id_estante}}" data-id-livro="{{id_livro}}" onclick='mostrarCaixa(this)'>Remover</li>
+                    </ul>
+                </div>
 
-                    {{/estante.livros}}
+                {{/estante.livros}}
             </div>
+        </div>
+
         {{/estante}}    
     </main>
 
@@ -52,7 +104,7 @@
         </ul> -->
 
     <div class="popup" id="popup-detalhes">
-        <div class="popup-content content-detalhes">
+        <div class="content-detalhes">
 
             <h6 id="nome-livro-detalhes"></h6>
 
@@ -169,7 +221,7 @@
 
 <script>
     const popupDetalhes = document.getElementById('popup-detalhes');
-    const contentDetalhes = document.querySelector('.popup-content');
+    const contentDetalhes = document.querySelector('.content-detalhes');
 
     popupDetalhes.addEventListener('click', function(event) {
         if (!contentDetalhes.contains(event.target)) {

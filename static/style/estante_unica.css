@@ -1,7 +1,67 @@
+body {
+    background-color: #E8E4E4;
+}
+
 .estante {
-    background-color: rgba(217, 175, 255, 0.63);
+    background-image: url('/static/images/bookshelf.jpg');
+    background-size: cover;
+    background-position: center;
     width: 60%;
-    height: 500px;
+    height: 70rem;
+}
+
+.prateleira {
+    padding-top: 10rem;
+    height: 30%;
+    width: 80%;
+}
+
+.livro {
+    background-image: url('/static/images/livro.png');
+    background-size: cover;
+    background-position: center;
+    width: 10rem;
+    height: 10rem;
+    margin-top: 1rem;
+}
+
+.prateleira button {
+    background-color: transparent;
+    border: none;
+}
+
+.novo-btn {
+    font-size: 1.2rem;
+    border: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
+    border-radius: 20px;
+    background-color: #86BD96;
+    color: #DCD7D5;
+}
+
+.icon {
+    width: 4rem;
+    height: 4rem;
+}
+
+.icon-novo {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Barra de pesquisa */
+.search-bar{
+    background-color: #E2D6C8;
+    border-radius: 1.2rem;
+    width: 45rem;
+}
+
+.search-img{
+    width: 2rem;
+    height: 2rem;
 }
 
 .popup {
@@ -16,7 +76,7 @@
     align-items: center;
 }
 
-.popup-content {
+.popup-content, .popup-editar-content, .content-detalhes {
     width: 35rem;
     background: linear-gradient(to right, #d2c3b2, #FAECDC);
     color: #63524A;
@@ -81,19 +141,4 @@
     padding: 0.2rem;
     width: 23%;
     border-radius: 10px;
-}
-
-.popup-editar-content {
-    width: 35rem;
-    background: linear-gradient(to right, #d2c3b2, #FAECDC);
-    color: #63524A;
-    padding: 2rem;
-    border-radius: 15px;
-}
-
-.livro {
-    background-color: #826f66be;
-    width: 6rem;
-    height: 10rem;
-    margin: 1rem;
 }
