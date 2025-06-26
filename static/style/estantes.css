@@ -1,5 +1,6 @@
 body {
     color: #E8E4E4;
+    background-color: #E8E4E4;
 }
 
 .content {
@@ -19,6 +20,7 @@ body {
     width: 10rem;
     height: 4rem;
     margin-top: -0.5rem;
+    margin-left: 10rem;
 }
 
 .icon {
@@ -130,9 +132,90 @@ body {
     background-color: #E2D6C8;
     border-radius: 1.2rem;
     width: 45rem;
+    margin-left: 10rem;
 }
 
 .search-img{
     width: 2rem;
     height: 2rem;
+}
+
+/* TESTE - estantes */
+.estante-card {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    text-decoration: none;
+    border-radius: 1.5rem;
+    padding: 1.2rem;
+    margin: 1rem;
+    width: 20rem;
+    transition: transform 0.2s;
+    color: #fff;
+    /* background-color: #d2c3b2; */
+    overflow: hidden;
+    text-align: center;
+    /* position: relative; */
+}
+
+.estante-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.estante-img {
+    width: 18rem;
+    height: 18rem;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    background-color: #8c82b4;
+    border-radius: 1.5rem;
+}
+
+.estante-nome {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #63524A;
+}
+
+.estante-descricao {
+    /* font-size: 1rem;
+    text-align: center;
+    color: #63524A;
+    margin: 0;
+    max-width: 3.5rem; */
+
+    /* font-size: 1rem;
+    color: #666;
+    overflow: scroll;
+    text-overflow: ellipsis;
+    max-height: 3rem;     
+    line-height: 1.2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;   
+    line-clamp: 3;
+    -webkit-box-orient: vertical; */
+
+    word-wrap: break-word;   
+    overflow-y: auto;        
+    max-height: 6rem;
+    font-size: 1rem;
+    text-align: center;
+    color: #63524A;
+    margin-top: 0.2rem;
+}
+
+/* TESTE - DROPDOWN MENU */
+.estante-menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    /* z-index: 1000; */
+}
+
+.estante-menu.show {
+    display: block;
 }
