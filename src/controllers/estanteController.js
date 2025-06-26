@@ -66,11 +66,16 @@ function postEditarEstante(req, res) {
     }    
 }
 
-function postDeletarEstante(req, res) {
-    Estante.destroy({ where: { id: req.body.id }}).then(() => res.redirect('/estantes/todas')).catch(error => {
-        res.status(500).send('Erro ao editar estante');
-        console.error('Error deleting user:', error);
-    });
+async function postDeletarEstante(req, res) {
+    try {
+        const id = req.params.id;
+        await Estante.destroy({ where: { id_estante: id } });
+
+        res.redirect('/estantes/todas');
+    } catch (error) {
+        console.error('Erro ao deletar estante:', error);
+        res.status(500).send('Erro ao deletar estante');
+    }
 }
 
 function validarCampos(dados_estante) {

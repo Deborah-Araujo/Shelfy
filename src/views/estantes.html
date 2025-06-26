@@ -65,7 +65,7 @@
                                 data-cor-estante="{{cor_estante}}" data-descricao-estante="{{descricao_estante}}" 
                                 data-id-estante="{{id_estante}}" onclick="openPopupEditar(this)">Editar</button></li>
 
-                            <li><button class="dropdown-item" href="/outra-rota">Deletar</button></li>
+                            <li><button class="dropdown-item" data-id-estante="{{id_estante}}" onclick='mostrarCaixa(this)'>Deletar</button></li>
                         </ul>
                     </div>
                 {{/estantes}}
@@ -256,3 +256,28 @@
             document.getElementById('popup-editar').style.display = 'flex';
         }
 </script>
+
+<script>
+    function mostrarCaixa(elemento) {
+    const resposta = confirm("Deseja realmente deletar a estante?");
+    if (resposta) {
+        const id = elemento.getAttribute('data-id-estante');
+
+        fetch(`/estantes/deletar/${id}`, {
+            method: 'POST'
+            }).then(res => {
+            if (res.redirected) {
+                window.location.href = res.url;
+            } else {
+                alert('Estante deletada!');
+                location.reload();
+            }
+        });
+    }
+    }
+</script>
+
+</body>
+</html>
+
+
