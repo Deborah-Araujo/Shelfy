@@ -37,15 +37,15 @@
         <div class="row" style="margin-top: 1.5rem;">
             <div class="col-8">
                 <!-- TESTE - barra de pesquisa -->
-                <form method="GET" action="/estantes/todas" class="mb-4 d-flex justify-content-center">
-                    <input type="text" name="busca" class="search-bar form-control me-2" placeholder="Pesquisar estante" value="{{busca}}">
+                <form method="GET" class="mb-4 d-flex justify-content-center">
+                    <input type="text" name="busca" class="search-bar form-control me-2" placeholder="Pesquisar livro" value="{{busca}}">
                     <button type="submit" class="btn search-btn"><img class="search-img" src="/static/images/lupa.png" alt=""></button>
                 </form>
 
-                <!-- Tem que modificar pra procurar pelos livros aqui -->
-                <!-- {{#estantes}}
-                    <div class="alert alert-warning text-center">Nenhuma estante encontrada com esse nome.</div>
-                {{/estantes}} -->
+                {{^estante.livros.length}}
+                    <div class="alert alert-warning text-center">Nenhum livro encontrado.</div>
+                {{/estante.livros.length}}
+
             </div>
 
             <div class="col-4">
