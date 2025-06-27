@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
 
     {{#estante}}
 
-        <div class="row">
+        <div class="row" style="margin-top: 1.5rem;">
             <div class="col-8">
                 <!-- TESTE - barra de pesquisa -->
                 <form method="GET" action="/estantes/todas" class="mb-4 d-flex justify-content-center">
@@ -67,7 +67,7 @@
                 data-nome-estante="{{nome_estante}}" 
                 onclick="openPopup(this)">Novo <img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon"></button> -->
 
-            <h5> {{nome_estante}} </h5>
+            <h5 class="nome-estante"> {{nome_estante}} </h5>
 
         <div class="container d-flex flex-block justify-content-center estante">
 

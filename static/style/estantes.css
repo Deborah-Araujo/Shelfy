@@ -183,23 +183,6 @@ body {
 }
 
 .estante-descricao {
-    /* font-size: 1rem;
-    text-align: center;
-    color: #63524A;
-    margin: 0;
-    max-width: 3.5rem; */
-
-    /* font-size: 1rem;
-    color: #666;
-    overflow: scroll;
-    text-overflow: ellipsis;
-    max-height: 3rem;     
-    line-height: 1.2rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;   
-    line-clamp: 3;
-    -webkit-box-orient: vertical; */
-
     word-wrap: break-word;   
     overflow-y: auto;        
     max-height: 6rem;
