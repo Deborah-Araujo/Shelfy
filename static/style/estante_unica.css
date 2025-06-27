@@ -17,12 +17,36 @@ body {
 }
 
 .livro {
-    background-image: url('/static/images/livro.png');
+    background-image: url('/static/images/bookin.png');
     background-size: cover;
     background-position: center;
-    width: 10rem;
-    height: 10rem;
-    margin-top: 1rem;
+    width: 13rem;
+    height: 12.5rem;
+    margin-top: 1.3rem;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-livro{
+    margin-top: 1.5rem;
+    color: #63524A;
+    font-size: 0.9rem;
+    max-width: 50%;
+    white-space: nowrap;       /* mantém tudo numa linha */
+    overflow: hidden;          /* esconde o que passar */
+    text-overflow: ellipsis; 
+    margin-left: 4.5rem;
+}
+
+.autor-livro{
+    margin-top: 1.5rem;
+    color: #63524A;
+    font-size: 0.9rem;
+    max-width: 50%;
+    white-space: nowrap;       /* mantém tudo numa linha */
+    overflow: hidden;          /* esconde o que passar */
+    text-overflow: ellipsis; 
+    margin-left: 4.5rem;
 }
 
 .prateleira button {
@@ -91,19 +115,43 @@ body {
     align-items: center;
 }
 
-.popup-content, .popup-editar-content, .content-detalhes {
+.popup-content, .popup-editar-content{
     width: 35rem;
     background: linear-gradient(to right, #d2c3b2, #FAECDC);
+    /* background-image: url(/static/images/chat-livrin.png); */
     color: #63524A;
     padding: 2rem;
     border-radius: 15px;
+}
+
+.content-detalhes{
+    width: 35rem;
+    height: 35rem;
+    background-image: url(/static/images/chat-livrin.png);
+    background-size: cover;
+    color: #63524A;
+}
+
+.content-detalhes h6{
+    margin-top: 12.5rem;
+    margin-left: 5rem;
+}
+
+.content-detalhes p{
+    margin-left: 7.5rem;
 }
 
 .popup-content h6 {
     padding-bottom: 1.5rem;
     margin-bottom: 2rem;
     border-bottom: 1px solid #8c82b4;
+    /* margin-top: 5rem; */
 }
+
+/* .novo-form{
+    margin-top: 11rem;
+    margin-left: 5rem;
+} */
 
 .novo-form input {
     margin-left: auto;
