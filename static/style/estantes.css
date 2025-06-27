@@ -122,7 +122,6 @@ body {
 }
 
 .estante {
-    background-color: #8c82b4;
     width: 200px;
     height: 200px;
 }
@@ -171,7 +170,7 @@ body {
     height: 18rem;
     object-fit: contain;
     margin-bottom: 1rem;
-    background-color: #8c82b4;
+    /* background-color: #8c82b4; */
     border-radius: 1.5rem;
 }
 
@@ -203,4 +202,33 @@ body {
 
 .estante-menu.show {
     display: block;
+}
+
+/* Pra as cores */
+.vermelho {
+    background-color: #F06365;
+}
+
+.azul {
+    background-color: #4B3F6E;
+}
+
+.azul-claro {
+    background-color: #90A8DF;
+}
+
+.verde {
+    background-color: #86BD96;
+}
+
+.cinza {
+    background-color: #DCD7D5;
+}
+
+.roxo {
+    background-color: #9C8CB9;
+}
+
+.laranja {
+    background-color: #F4B166;
 }

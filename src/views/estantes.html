@@ -25,7 +25,7 @@
             <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
 
             <ul>
-                <li><a href="#"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
+                <li><a href="/estantes/todas"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
                 <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
                 <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
             </ul>
@@ -73,7 +73,7 @@
                         data-cor-estante="{{cor_estante}}"
                         data-descricao-estante="{{descricao_estante}}">
 
-                        <img src="/static/images/estante-cheia.png" alt="Estante" class="estante-img">
+                        <img src="/static/images/estante-cheia.png" alt="Estante" class="estante-img {{cor_estante}}">
                         <h5 class="estante-nome">{{nome_estante}}</h5>
                         <p class="estante-descricao">{{descricao_estante}}</p>
                     </a>
@@ -110,13 +110,13 @@
                         <div class="col-3">
                             <label for="cor_estante">Cor:</label>
                             <select name="cor_estante" id="cor_estante">
-                                    <option value="#F06365">Vermelho</option>
-                                    <option value="#4B3F6E">Azul</option>
-                                    <option value="#90A8DF">Azul claro</option>
-                                    <option value="#86BD96">Verde</option>
-                                    <option value="#DCD7D5">Cinza</option>
-                                    <option value="#9C8CB9">Roxo</option>
-                                    <option value="#F4B166">Laranja</option>
+                                    <option value="vermelho">Vermelho</option>
+                                    <option value="azul">Azul</option>
+                                    <option value="azul-claro">Azul claro</option>
+                                    <option value="verde">Verde</option>
+                                    <option value="cinza">Cinza</option>
+                                    <option value="roxo">Roxo</option>
+                                    <option value="laranja">Laranja</option>
                             </select>
                         </div>
                     </div>
