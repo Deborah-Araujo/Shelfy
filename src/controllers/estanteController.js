@@ -19,11 +19,13 @@ async function estantesView(req, res) {
     });
 
 //buscando nome de usuario pra colocar na sidebar
-const nomeUsuario = req.session.nome_usuario;
+const nomeUsuario = req.session.nome_usuario
+const emailUsuario = req.session.email_usuario
 
 res.render('estantes.html', { 
     estantes, 
     nomeUsuario,
+    emailUsuario,
     busca: termoBusca
  });
 }
@@ -52,10 +54,12 @@ async function estante_unicaView(req, res) {
 
     //buscando nome de usuario pra colocar na sidebar
     const nomeUsuario = req.session.nome_usuario;
+    const emailUsuario = req.session.email_usuario
 
     res.render('estante_unica.html', { 
         estante,
         nomeUsuario,
+        emailUsuario,
         busca: termoBusca
      });
 }

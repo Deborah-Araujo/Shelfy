@@ -10,7 +10,7 @@ body {
     height: 70rem;
 }
 
-.prateleira {
+.prateleira {   
     padding-top: 10rem;
     height: 30%;
     width: 80%;
@@ -180,4 +180,9 @@ body {
     padding: 0.2rem;
     width: 23%;
     border-radius: 10px;
+}
+
+.user-menu li a {
+    padding: 0;
+    text-align: center;
 }
