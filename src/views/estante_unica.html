@@ -103,7 +103,7 @@
 
             <h6 id="nome-livro-detalhes"></h6>
 
-            <div class="novo-form">
+            <div class="novo-form form2">
                 <div class="row">
                     <p><span id="titulo_livro_detalhes"></span></p>
                 </div>
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="row d-flex justify-content-center">
-                    <button class="submit-btn">Voltar</button>
+                    <button class="submit-btn" onclick="fecharPopupDetalhes()">Voltar</button>
                 </div>
             </div>
         </div>
@@ -299,6 +299,12 @@
             popup.style.display = 'none';
         }
     });
+
+    // Fecha o popup ao clicar no botão
+    function fecharPopupDetalhes() {
+        document.getElementById('popup-detalhes').style.display = 'none';
+    }
+
 </script>
 
 <script>

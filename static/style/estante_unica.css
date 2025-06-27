@@ -91,19 +91,43 @@ body {
     align-items: center;
 }
 
-.popup-content, .popup-editar-content, .content-detalhes {
+.popup-content, .popup-editar-content{
     width: 35rem;
     background: linear-gradient(to right, #d2c3b2, #FAECDC);
+    /* background-image: url(/static/images/chat-livrin.png); */
     color: #63524A;
     padding: 2rem;
     border-radius: 15px;
+}
+
+.content-detalhes{
+    width: 35rem;
+    height: 35rem;
+    background-image: url(/static/images/chat-livrin.png);
+    background-size: cover;
+    color: #63524A;
+}
+
+.content-detalhes h6{
+    margin-top: 12.5rem;
+    margin-left: 5rem;
+}
+
+.content-detalhes p{
+    margin-left: 7.5rem;
 }
 
 .popup-content h6 {
     padding-bottom: 1.5rem;
     margin-bottom: 2rem;
     border-bottom: 1px solid #8c82b4;
+    /* margin-top: 5rem; */
 }
+
+/* .novo-form{
+    margin-top: 11rem;
+    margin-left: 5rem;
+} */
 
 .novo-form input {
     margin-left: auto;
