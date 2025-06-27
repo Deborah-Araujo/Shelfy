@@ -204,7 +204,12 @@ body {
     display: block;
 }
 
-/* Pra as cores */
+.user-menu li a {
+    padding: 0;
+    text-align: center;
+}
+
+/* Pra as cores das estantes*/
 .vermelho {
     background-color: #F06365;
 }
