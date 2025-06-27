@@ -209,9 +209,46 @@ body {
     text-align: center;
 }
 
+footer {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    color: #20202092;
+    margin-top: 1rem;
+    border-top: 1px solid #4b3f6e2a;
+    bottom: 0;
+    width: 80%;
+    height: 5rem; /* Define a altura do rodapé */
+}
+
+footer a {
+    text-decoration: none;
+    color: #4B3F6E;
+}
+
+footer p {
+    margin: 2px;
+}
+
+footer a:hover {
+    color: #241d38;
+    text-shadow: 3px 3px 5px #241d38;
+}
+
+footer .logo {
+    width: 6rem;
+    height: 6rem;
+}
+
+footer .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 /* Pra as cores das estantes*/
 .vermelho {
     background-color: #F06365;
+    color: #F06365;
 }
 
 .azul {
