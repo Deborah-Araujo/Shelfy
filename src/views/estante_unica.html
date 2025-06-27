@@ -11,8 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="/static/style/estante_unica.css">
-    <link rel="stylesheet" href="/static/style/side-bar.css">
-    
+    <link rel="stylesheet" href="/static/style/side-bar.css">    
 </head>
 
     <nav id="sidebar">
@@ -20,7 +19,7 @@
         <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
 
         <ul>
-            <li><a href="/homepage"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
+            <li><a href="/estantes/todas"><span class="icon"><img src="/static/images/casinha.png" alt=""></span><span class="text">Home</span></a></li>
             <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
             <li><a href="#"><span class="icon"><img src="/static/images/icon-livrinho.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
         </ul>
@@ -71,7 +70,7 @@
 
         <div class="container d-flex flex-block justify-content-center estante">
 
-            <div class="row row-cols-3 justify-content-evenly prateleira">
+            <div class="row row-cols-3 prateleira">
                 {{#estante.livros}}
                 <div class="col dropdown">
                     <button type="button" class="external-btn" data-bs-toggle="dropdown">
@@ -96,12 +95,8 @@
         </div>
 
         {{/estante}}    
-    </main>
 
-        <!-- <ul class="dropdown-menu menuEstante" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">Ação 1</a></li>
-            <li><a class="dropdown-item" href="#">Ação 2</a></li>
-        </ul> -->
+    </main>
 
     <div class="popup" id="popup-detalhes">
         <div class="content-detalhes">
