@@ -17,12 +17,36 @@ body {
 }
 
 .livro {
-    background-image: url('/static/images/livro.png');
+    background-image: url('/static/images/bookin.png');
     background-size: cover;
     background-position: center;
-    width: 10rem;
-    height: 10rem;
-    margin-top: 1rem;
+    width: 13rem;
+    height: 12.5rem;
+    margin-top: 1.3rem;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.titulo-livro{
+    margin-top: 1.5rem;
+    color: #63524A;
+    font-size: 0.9rem;
+    max-width: 50%;
+    white-space: nowrap;       /* mantém tudo numa linha */
+    overflow: hidden;          /* esconde o que passar */
+    text-overflow: ellipsis; 
+    margin-left: 4.5rem;
+}
+
+.autor-livro{
+    margin-top: 1.5rem;
+    color: #63524A;
+    font-size: 0.9rem;
+    max-width: 50%;
+    white-space: nowrap;       /* mantém tudo numa linha */
+    overflow: hidden;          /* esconde o que passar */
+    text-overflow: ellipsis; 
+    margin-left: 4.5rem;
 }
 
 .prateleira button {
