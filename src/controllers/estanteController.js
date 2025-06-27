@@ -29,19 +29,35 @@ res.render('estantes.html', {
 }
 
 async function estante_unicaView(req, res) {
+
+    const termoBusca = req.query.busca || '';
+    
     const estante = await Estante.findOne({
-    where: {
-        id_estante: req.params.id,
-        fk_id_usuario_estante: req.session.id_usuario
-    },
-    include: [{
-        model: Livro // -> Inclui os livros associados à estante
-    }]
+        where: {
+            id_estante: req.params.id,
+            fk_id_usuario_estante: req.session.id_usuario
+        },
+        include: [{
+            model: Livro,
+            where: {
+                titulo_livro: {
+                    [Op.like]: `%${termoBusca}%`
+                }
+            },
+            required: false 
+        }]
     });
 
     console.log(estante.livros)
 
-    res.render('estante_unica.html', { estante });
+    //buscando nome de usuario pra colocar na sidebar
+    const nomeUsuario = req.session.nome_usuario;
+
+    res.render('estante_unica.html', { 
+        estante,
+        nomeUsuario,
+        busca: termoBusca
+     });
 }
 
 function postAdicionarEstante(req, res){
