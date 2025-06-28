@@ -20,11 +20,13 @@ async function estantesView(req, res) {
 //buscando nome de usuario pra colocar na sidebar
 const nomeUsuario = req.session.nome_usuario
 const emailUsuario = req.session.email_usuario
+const erro_campos = req.query.erro_campos;
 
 res.render('estantes.html', { 
     estantes, 
     nomeUsuario,
     emailUsuario,
+    erro_campos,
     busca: termoBusca
  });
 }
@@ -54,11 +56,13 @@ async function estante_unicaView(req, res) {
     //buscando nome de usuario pra colocar na sidebar
     const nomeUsuario = req.session.nome_usuario;
     const emailUsuario = req.session.email_usuario
+    const erro_campos = req.query.erro_campos;
 
     res.render('estante_unica.html', { 
         estante,
         nomeUsuario,
         emailUsuario,
+        erro_campos,
         busca: termoBusca
      });
 }
@@ -79,8 +83,8 @@ function postAdicionarEstante(req, res){
             res.status(500).send('Erro ao salvar estante');
         });
     } else {
-        console.log("Erro aqui")
-        res.redirect('/');
+        console.log("Erro aqui");
+        res.redirect('/estantes/todas?erro_campos=1');
     }
 }
 
@@ -98,8 +102,8 @@ function postEditarEstante(req, res) {
             res.status(500).send('Erro ao editar estante');
         });
     } else {
-        console.log("Erro aqui")
-        res.redirect('/');
+        console.log("Erro aqui");
+        res.redirect('/estantes/todas?erro_campos=1');
     }    
 }
 

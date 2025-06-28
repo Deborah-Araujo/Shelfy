@@ -54,15 +54,14 @@
                 {{^estantes}}
                     <div class="alert alert-warning text-center">Nenhuma estante encontrada.</div>
                 {{/estantes}}
-            </div>
-            <div class="col-4">
-                <button class="novo-btn" onclick="openPopup()">Novo<img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon-novo"></button>
-
                 {{#erro_campos}}
                     <div class="alert alert-danger mt-2">
                         <strong>Erro! </strong>Preencha todos os campos.
                     </div>
                 {{/erro_campos}}
+            </div>
+            <div class="col-4">
+                <button class="novo-btn" onclick="openPopup()">Novo<img src="/static/icons/icon-mais.png" alt="ícone de mais" class="icon-novo"></button>
             </div>
         </div>
 
@@ -71,7 +70,7 @@
             {{#estantes}}
 
                 <!-- TESTE - DROPDOWN MENU -->
-                <div class="col context-menu-wrapper position-relative">
+                <div class="col context-menu-wrapper position-relative estante-container">
                     <a href="/estantes/{{id_estante}}" class="estante-card" oncontextmenu="abrirMenuContexto(event, this)"
                         data-id-estante="{{id_estante}}"
                         data-nome-estante="{{nome_estante}}"

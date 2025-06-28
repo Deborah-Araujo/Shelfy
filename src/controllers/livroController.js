@@ -19,7 +19,7 @@ function postAdicionarLivro(req, res){
         });
     } else {
         console.log("Erro aqui")
-        res.redirect('/');
+        res.redirect(`/estantes/${id_estante}?erro_campos=1`);
     }
 }
 
@@ -51,7 +51,7 @@ function postEditarLivro(req, res) {
         });
     } else {
         console.log("Erro aqui")
-        res.redirect('/');
+        res.redirect(`/estantes/${req.params.id_estante}?erro_campos=1`);
     }    
 }
 
