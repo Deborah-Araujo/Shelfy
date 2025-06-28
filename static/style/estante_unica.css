@@ -32,8 +32,8 @@ body {
     color: #63524A;
     font-size: 0.9rem;
     max-width: 50%;
-    white-space: nowrap;       /* mantém tudo numa linha */
-    overflow: hidden;          /* esconde o que passar */
+    white-space: nowrap;       
+    overflow: hidden;          
     text-overflow: ellipsis; 
     margin-left: 4.5rem;
 }
@@ -43,8 +43,8 @@ body {
     color: #63524A;
     font-size: 0.9rem;
     max-width: 50%;
-    white-space: nowrap;       /* mantém tudo numa linha */
-    overflow: hidden;          /* esconde o que passar */
+    white-space: nowrap;       
+    overflow: hidden;          
     text-overflow: ellipsis; 
     margin-left: 4.5rem;
 }
@@ -104,7 +104,7 @@ body {
 }
 
 .popup {
-    display: none; /* ou flex pra mostrar */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -118,7 +118,6 @@ body {
 .popup-content, .popup-editar-content{
     width: 35rem;
     background: linear-gradient(to right, #d2c3b2, #FAECDC);
-    /* background-image: url(/static/images/chat-livrin.png); */
     color: #63524A;
     padding: 2rem;
     border-radius: 15px;
@@ -145,13 +144,7 @@ body {
     padding-bottom: 1.5rem;
     margin-bottom: 2rem;
     border-bottom: 1px solid #8c82b4;
-    /* margin-top: 5rem; */
 }
-
-/* .novo-form{
-    margin-top: 11rem;
-    margin-left: 5rem;
-} */
 
 .novo-form input {
     margin-left: auto;
@@ -218,7 +211,7 @@ footer {
     border-top: 1px solid #4b3f6e2a;
     bottom: 0;
     width: 100%;
-    height: 5rem; /* Define a altura do rodapé */
+    height: 5rem; 
 }
 
 footer a {

@@ -1,5 +1,4 @@
 // As constraints foram definidas saparadamente para evitar import cricular entre as models 
-
 const Usuario = require('./usuarioModel');
 const Estante = require('./estanteModel');
 const Livro = require('./livroModel')

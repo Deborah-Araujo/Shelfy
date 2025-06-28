@@ -1,6 +1,5 @@
 const Estante = require('../models/estanteModel');
 const Livro = require('../models/livroModel')
-// const livroController = require('../controllers/livroController')
 
 // TESTE - barra de busca
 const { Op } = require('sequelize');
