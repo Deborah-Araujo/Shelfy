@@ -162,6 +162,11 @@ main{
     text-align: center;
 }
 
+.estante-container {
+    display: flex;
+    justify-content: center;
+}
+
 .estante-card:hover {
     transform: scale(1.05);
     cursor: pointer;
