@@ -74,7 +74,8 @@ main.expanded {
   border-top: 1px solid #ccc;
   width: 100%;
   box-sizing: border-box;
-  background-color: #9C8CB9;
+  background: linear-gradient(to right, #9C8CB9, #e8ddff);
+  /* background-color: #9C8CB9; */
 }
 
 .user-img {
