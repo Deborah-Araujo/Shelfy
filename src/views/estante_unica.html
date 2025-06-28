@@ -18,7 +18,7 @@
         <button id="toggle-expand" aria-label="Expandir ou recolher sidebar"><img class="img-mobile" src="/static/images/tres-tracinhos.png" alt=""></button>
         <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
 
-        <ul>
+        <ul class="side-lista">
             <li><a href="/estantes/todas"><span class="icon"><img src="/static/images/estantinha.png" alt=""></span><span class="text">Home</span></a></li>
             <li><a href="/estantes/todas"><span class="icon"><img src="/static/images/livrin.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
             <li><a href="https://github.com/Deborah-Araujo/Shelfy.git"><span class="icon"><img src="/static/images/config2.png" alt=""></span> <span class="text">Configurações</span></a></li>
@@ -30,10 +30,10 @@
                 <span class="user-name">{{nomeUsuario}}</span>
             </button>
 
-            <ul class="dropdown-menu user-menu">
-                <li>{{emailUsuario}}</li>
-                <li><a class="dropdown-item text-center" href="/user/logout">Logout</a></li>
-            </ul>
+            <div class="dropdown-menu user-menu" aria-labelledby="userDropdown">
+                <div class="dropdown-item-text text-center">{{emailUsuario}}</div>
+                <a class="dropdown-item text-center" href="/user/logout">Logout</a>
+            </div>
         </div>
     </nav>
 
@@ -50,7 +50,7 @@
                 </form>
 
                 {{^estante.livros.length}}
-                    <div class="alert alert-warning text-center">Nenhum livro encontrado.</div>
+                    <div class="alert alert-warning text-center" style="margin-left: 30rem;">Nenhum livro encontrado.</div>
                 {{/estante.livros.length}}
 
             </div>
@@ -85,8 +85,6 @@
                             <p class="titulo-livro">{{titulo_livro}}</p>
                             <p class="autor-livro">{{autor_livro}}</p>
                         </div>
-                        <!-- <p>{{titulo_livro}}</p>
-                        <p>{{autor_livro}}</p> -->
                     </button>
     
                     <ul class="dropdown-menu">
@@ -151,10 +149,10 @@
                 <div class="row">
                     <p>Descrição: <span id="descricao_livro_detalhes"></span></p>
                 </div>
+            </div>
 
-                <div class="row d-flex justify-content-center">
-                    <button class="submit-btn" onclick="fecharPopupDetalhes()">Voltar</button>
-                </div>
+            <div class="row d-flex justify-content-center" style="margin-top: 9rem;">
+                <button class="submit-btn" onclick="fecharPopupDetalhes()">Voltar</button>
             </div>
         </div>
     </div>
@@ -193,7 +191,7 @@
                         <textarea type="text" id="descricao_livro" name="descricao_livro"></textarea>
                     </div>
 
-                    <div class="row d-flex justify-content-center">
+                    <div class="row">
                         <button class="submit-btn">Criar</button>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
             <button id="toggle-expand" aria-label="Expandir ou recolher sidebar"><img class="img-mobile" src="/static/images/tres-tracinhos.png" alt=""></button>
             <img class="img-central" src="/static/images/icon-vertical2.png" alt="">
 
-            <ul>
+            <ul class="side-lista">
                 <li><a href="/estantes/todas"><span class="icon"><img src="/static/images/estantinha.png" alt=""></span><span class="text">Home</span></a></li>
                 <li><a href="/estantes/todas"><span class="icon"><img src="/static/images/livrin.png" alt=""></span> <span class="text">Minhas Estantes</span></a></li>
                 <li><a href="https://github.com/Deborah-Araujo/Shelfy.git"><span class="icon"><img src="/static/images/config2.png" alt=""></span> <span class="text">Configurações</span></a></li>
@@ -35,10 +35,10 @@
                     <span class="user-name">{{nomeUsuario}}</span>
                 </button>
 
-                <ul class="dropdown-menu user-menu">
-                    <li>{{emailUsuario}}</li>
-                    <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
-                </ul>
+                <div class="dropdown-menu user-menu" aria-labelledby="userDropdown">
+                    <div class="dropdown-item-text text-center">{{emailUsuario}}</div>
+                    <a class="dropdown-item text-center" href="/user/logout">Logout</a>
+                </div>
             </div>
         </nav>
 
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        <footer class="container">
+        <!-- <footer class="container">
             <div class="row d-flex justify-content-center">
                  <div class="col-3">
                     <img src="/static/images/icon-vertical.png" class="logo">
@@ -114,7 +114,7 @@
                     <p><a href=""><img src="/static/icons/icon-facebook.png" class="icon"> FaceBook</a></p>
                 </div>
             </div>
-        </footer>
+        </footer> -->
     </main>
 
     <div class="popup" id="popup">
@@ -242,6 +242,25 @@
         });
     });
 
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const sidebar = document.getElementById('sidebar');
+  const dropupToggle = document.querySelector('.sidebar-footer .dropdown-toggle');
+  const dropupMenu = document.querySelector('.sidebar-footer .dropdown-menu');
+
+  // Impede o dropup de abrir se a sidebar não estiver expandida
+  dropupToggle.addEventListener('click', function (event) {
+    if (!sidebar.classList.contains('expanded')) {
+      event.preventDefault(); // impede de abrir
+      event.stopPropagation();
+    }
+  });
+
+  // Garante que o menu nunca esteja visível por padrão
+  dropupMenu.classList.remove('show');
+});
 </script>
 
 <script>

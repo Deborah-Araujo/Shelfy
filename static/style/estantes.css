@@ -35,8 +35,8 @@ body {
 }
 
 .popup {
+    position: absolute;
     display: none; /* ou flex pra mostrar */
-    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -170,7 +170,6 @@ body {
     height: 18rem;
     object-fit: contain;
     margin-bottom: 1rem;
-    /* background-color: #8c82b4; */
     border-radius: 1.5rem;
 }
 
@@ -209,13 +208,14 @@ body {
 }
 
 footer {
+    position: static;
+    bottom: 0;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
     color: #20202092;
-    margin-top: 1rem;
+    margin-top: 15rem;
     border-top: 1px solid #4b3f6e2a;
-    bottom: 0;
     width: 80%;
     height: 5rem; /* Define a altura do rodapé */
 }
