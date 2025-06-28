@@ -1,6 +1,13 @@
 body {
     color: #E8E4E4;
     background-color: #E8E4E4;
+    flex-direction: column;
+    display: flex;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
 }
 
 .content {
@@ -35,8 +42,8 @@ body {
 }
 
 .popup {
-    position: absolute;
     display: none; /* ou flex pra mostrar */
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -153,10 +160,8 @@ body {
     width: 20rem;
     transition: transform 0.2s;
     color: #fff;
-    /* background-color: #d2c3b2; */
     overflow: hidden;
     text-align: center;
-    /* position: relative; */
 }
 
 .estante-card:hover {
@@ -217,7 +222,8 @@ footer {
     margin-top: 15rem;
     border-top: 1px solid #4b3f6e2a;
     width: 80%;
-    height: 5rem; /* Define a altura do rodapé */
+    height: 5rem; 
+    margin-top: auto;
 }
 
 footer a {
