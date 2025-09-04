@@ -34,4 +34,6 @@ as it works as an interactive virtual bookshelf where each book can be clicked t
     node index.js
     ```
  7. Open in your browser
+    ``` Bash
     http://localhost:8080
+    ```
